@@ -1,0 +1,727 @@
+Prompts de apoyo:
+
+Prompt 1: 
+## Overview
+
+Clay.com is the most playful B2B SaaS interface in the GTM-data category. The base atmosphere is **cream-tinted white canvas** (`{colors.canvas}` — #fffaf0) holding dark-navy ink type and **3D-rendered claymation illustrations** (mountains, mascot characters, peach/ochre/lavender landscapes) as the dominant brand voltage. Where most data-platform brands play it cool with grids and gradients, Clay leans hard into hand-crafted-looking 3D illustrations and saturated single-color feature cards.
+
+Type voice runs **Plain Black** (or substituted with Inter weight 500-600) — a custom rounded display face used at very large sizes (72px hero) with negative letter-spacing. Body type uses Inter at standard weights. The display weight stays at 500, never bolder — the rounded character of the typeface gives it warmth without needing weight.
+
+Component voltage comes from **saturated single-color feature cards** in a 6-color palette: hot pink, deep teal, lavender, peach, ochre, and cream-card. Each card shows product UI fragments at small scale — Claygent agent runs, sequencer flows, CRM enrichment outputs. The colored card IS the primary visual element on every long-scroll page.
+
+**Key Characteristics:**
+- Cream-tinted white canvas (`{colors.canvas}` — #fffaf0). The warmth differentiates Clay from cool-gray competitor sites.
+- Dark navy/black primary CTAs (`{colors.primary}` — #0a0a0a). Buttons rounded `{rounded.md}` (12px) — friendly modern but not pill.
+- 6-color saturated feature card palette: `{colors.brand-pink}`, `{colors.brand-teal}`, `{colors.brand-lavender}`, `{colors.brand-peach}`, `{colors.brand-ochre}`, `{colors.surface-card}` (cream).
+- 3D claymation illustrations (mountains, characters, abstract shapes) as full-bleed hero artifacts — the brand's most-recognized visual element.
+- Custom rounded Plain Black display typeface at 500 weight with -1 to -2.5px letter-spacing on display sizes.
+- Border radius is generous: `{rounded.md}` (12px) for buttons + inputs, `{rounded.lg}` (16px) for content cards, `{rounded.xl}` (24px) for feature cards. The bigger radius matches the rounded display type's character.
+- Product UI fragments embedded inside colored cards at small scale — agent run logs, sequencer flows, enrichment results.
+- Section rhythm `{spacing.section}` (96px) between major bands.
+- Footer is cream-tinted (`{colors.surface-soft}`) — Clay does NOT use a dark footer. Even the closing band stays warm-light.
+
+## Colors
+
+### Brand & Accent
+- **Primary** (`{colors.primary}` — #0a0a0a): All primary CTAs, h1/h2 ink type. Near-black with slight warmth.
+- **Brand Pink** (`{colors.brand-pink}` — #ff4d8b): Hot-pink feature card surface. Sequencer / outbound feature pages.
+- **Brand Teal** (`{colors.brand-teal}` — #1a3a3a): Deep teal-green feature card. Often the featured pricing tier.
+- **Brand Lavender** (`{colors.brand-lavender}` — #b8a4ed): Soft lavender feature card.
+- **Brand Peach** (`{colors.brand-peach}` — #ffb084): Warm peach feature card.
+- **Brand Ochre** (`{colors.brand-ochre}` — #e8b94a): Mustard / ochre feature card and illustration accents.
+- **Brand Mint** (`{colors.brand-mint}` — #a4d4c5): Mint accent on illustrations and small badges.
+- **Brand Coral** (`{colors.brand-coral}` — #ff6b5a): Coral accent for highlights.
+
+### Surface
+- **Canvas** (`{colors.canvas}` — #fffaf0): The default page floor. Cream-tinted white.
+- **Surface Soft** (`{colors.surface-soft}` — #faf5e8): Footer and CTA-band background.
+- **Surface Card** (`{colors.surface-card}` — #f5f0e0): Cream feature cards, testimonial cards.
+- **Surface Strong** (`{colors.surface-strong}` — #ebe6d6): Stronger cream for emphasized bands.
+- **Surface Dark** (`{colors.surface-dark}` — #0a1a1a): Dark teal-tinted near-black for occasional dark cards (rare).
+- **Surface Dark Elevated** (`{colors.surface-dark-elevated}` — #1a2a2a): Elevated dark cards.
+- **Hairline** (`{colors.hairline}` — #e5e5e5): 1px borders on cards and inputs.
+
+### Text
+- **Ink** (`{colors.ink}` — #0a0a0a): Headlines and primary text.
+- **Body Strong** (`{colors.body-strong}` — #1a1a1a): Emphasized body, lead paragraphs.
+- **Body** (`{colors.body}` — #3a3a3a): Default running-text.
+- **Muted** (`{colors.muted}` — #6a6a6a): Sub-headings, breadcrumbs, footer body.
+- **Muted Soft** (`{colors.muted-soft}` — #9a9a9a): Captions, fine-print.
+- **On Primary / On Dark** (`{colors.on-primary}` — #ffffff): Text on primary buttons + dark feature cards (teal).
+
+### Semantic
+- **Success** (`{colors.success}` — #22c55e): Success states.
+- **Warning** (`{colors.warning}` — #f59e0b): Warning callouts.
+- **Error** (`{colors.error}` — #ef4444): Validation errors.
+
+## Typography
+
+### Font Family
+The system runs **Plain Black** (a custom rounded display face) for headlines and **Inter** for body, navigation, and UI. Plain Black at weight 500 with negative letter-spacing handles every display headline; Inter handles the rest. The fallback stack walks `Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif` for both.
+
+### Hierarchy
+
+| Token | Size | Weight | Line Height | Letter Spacing | Use |
+|---|---|---|---|---|---|
+| `{typography.display-xl}` | 72px | 500 | 1.0 | -2.5px | Homepage h1 ("Go to market with unique data") — Plain Black |
+| `{typography.display-lg}` | 56px | 500 | 1.05 | -2px | Section heads — Plain Black |
+| `{typography.display-md}` | 40px | 500 | 1.1 | -1px | Sub-section heads, product names |
+| `{typography.display-sm}` | 32px | 500 | 1.15 | -0.5px | CTA-band heads, feature card titles |
+| `{typography.title-lg}` | 24px | 600 | 1.3 | -0.3px | Pricing plan names, larger feature titles |
+| `{typography.title-md}` | 18px | 600 | 1.4 | 0 | Card titles, intro paragraphs |
+| `{typography.title-sm}` | 16px | 600 | 1.4 | 0 | Small card titles, list labels |
+| `{typography.body-md}` | 16px | 400 | 1.55 | 0 | Default running-text |
+| `{typography.body-sm}` | 14px | 400 | 1.55 | 0 | Footer body, fine-print |
+| `{typography.caption}` | 13px | 500 | 1.4 | 0 | Badge labels, captions |
+| `{typography.caption-uppercase}` | 12px | 600 | 1.4 | 1.5px | Section labels, "FEATURED" badges |
+| `{typography.button}` | 14px | 600 | 1.0 | 0 | Standard button labels |
+| `{typography.nav-link}` | 14px | 500 | 1.4 | 0 | Top-nav menu items |
+
+### Principles
+Plain Black at weight 500 + negative letter-spacing IS the brand voice. Going to weight 700 reads as bombastic; the rounded character of the typeface adds warmth that bolder weight would flatten.
+
+The body-vs-display split is functional: Plain Black for Plain Black moments (headlines), Inter for everything else (running text, UI, buttons). Mixing them is a system violation.
+
+### Note on Font Substitutes
+If Plain Black is unavailable, **Inter** at weight 500 with -0.05em letter-spacing is a usable approximation. **Söhne Breit** at weight Buch is an alternative if licensed. **Recoleta** at weight 500 carries similar rounded-display warmth.
+
+## Layout
+
+### Spacing System
+- **Base unit:** 4px.
+- **Tokens:** `{spacing.xxs}` 4px · `{spacing.xs}` 8px · `{spacing.sm}` 12px · `{spacing.md}` 16px · `{spacing.lg}` 24px · `{spacing.xl}` 32px · `{spacing.xxl}` 48px · `{spacing.section}` 96px.
+- **Section padding:** `{spacing.section}` (96px) between major editorial bands.
+- **Card internal padding:** `{spacing.xl}` (32px) for feature cards and pricing tiers; `{spacing.lg}` (24px) for testimonial and product mockup cards.
+
+### Grid & Container
+- **Max content width:** ~1280px centered.
+- **Editorial body:** Single 12-column grid; hero often uses 7/5 split (h1 left, illustration right).
+- **Feature card grids:** 3-up at desktop, 2-up at tablet, 1-up at mobile.
+- **Pricing grid:** 3-4 up at desktop, 1-up at mobile.
+
+### Whitespace Philosophy
+Clay uses generous whitespace around big rounded display headlines and saturated feature cards. The cream canvas + colored cards + 3D illustrations create a playful warmth that competing data-platform sites lack.
+
+## Elevation & Depth
+
+| Level | Treatment | Use |
+|---|---|---|
+| Flat | No shadow, no border | Body sections, top nav, hero |
+| Soft hairline | 1px `{colors.hairline}` border | Inputs, small content cards |
+| Saturated card | Brand pink/teal/lavender/peach/ochre fill — no shadow | Feature cards |
+| Cream card | `{colors.surface-card}` background — no shadow | Testimonial, secondary cards |
+| Subtle drop shadow | Faint shadow at low alpha | Hover-elevated states (rare) |
+
+The system uses no heavy shadows. Depth comes from the saturated color contrast between cream canvas and bright feature cards.
+
+### Decorative Depth
+- **3D claymation illustrations** — mountains, characters, mascots rendered in a hand-crafted 3D style. The brand's most-recognized depth element. Not a token — these are illustrated assets.
+- **Mascot characters** appear as inline figures in feature cards and CTAs.
+
+## Shapes
+
+### Border Radius Scale
+
+| Token | Value | Use |
+|---|---|---|
+| `{rounded.xs}` | 6px | Small badges, dropdown items |
+| `{rounded.sm}` | 8px | Small buttons, hairline-border accent |
+| `{rounded.md}` | 12px | Standard CTA buttons, text inputs |
+| `{rounded.lg}` | 16px | Content cards, testimonial cards, pricing tiers |
+| `{rounded.xl}` | 24px | Feature cards (the saturated brand-color cards) |
+| `{rounded.pill}` | 9999px | Category tabs, badge pills |
+| `{rounded.full}` | 9999px / 50% | Avatars, icon buttons |
+
+## Components
+
+### Top Navigation
+
+**`top-nav`** — Cream nav bar pinned to top. 64px tall, `{colors.canvas}` background. Carries the Clay logo + wordmark at left, primary horizontal menu (Product, Solutions, Resources, Pricing, Customers) center, right-side cluster with "Sign in" + "Try free" `{component.button-primary}`. Menu items in `{typography.nav-link}` (Inter 14px / 500).
+
+### Buttons
+
+**`button-primary`** — Background `{colors.primary}` (near-black), text `{colors.on-primary}` (white), type `{typography.button}` (Inter 14px / 600), padding 12px × 20px, height 44px, rounded `{rounded.md}` (12px).
+
+**`button-secondary`** — Cream button with hairline outline. Background `{colors.canvas}`, text `{colors.ink}`, 1px hairline border.
+
+**`button-on-color`** — White button used over saturated brand-color feature cards. Same shape as primary but inverted (white background, ink text).
+
+**`button-text-link`** — Inline text button, no background. Used for "Sign in" and inline link CTAs.
+
+**`text-link`** — Inline body links in `{colors.ink}` with underline.
+
+### Cards & Containers
+
+**`hero-band`** — Cream-canvas hero with 7-5 grid: h1 + sub-headline + button row on the left, 3D claymation illustration on the right. Vertical padding `{spacing.section}` (96px).
+
+**`hero-illustration-card`** — Right-side artifact holding 3D claymation illustration (mountains, mascot character, abstract shapes). Background `{colors.surface-soft}`, rounded `{rounded.xl}` (24px). The illustration IS the artifact.
+
+**`feature-card-pink`** / **`feature-card-teal`** / **`feature-card-lavender`** / **`feature-card-peach`** / **`feature-card-ochre`** — Saturated single-color feature cards. Background varies per variant; rounded `{rounded.xl}` (24px); padding `{spacing.xl}` (32px). Each card carries an h3 in `{typography.title-md}`, a body description, and a product UI fragment or mascot illustration. Text color flips to `{colors.on-dark}` (white) on pink and teal cards, `{colors.ink}` (dark) on lavender/peach/ochre cards (the lighter saturations have enough contrast for dark text).
+
+**`feature-card-cream`** — Lower-key feature card variant on `{colors.surface-card}`. Used for less-emphasized features that don't warrant a saturated color.
+
+**`product-mockup-card`** — Card showing actual Clay product UI (Claygent agent runs, sequencer flows, CRM enrichment tables). Background `{colors.canvas}` with hairline border, rounded `{rounded.lg}`, padding `{spacing.lg}` (24px).
+
+**`testimonial-card`** — Customer quote cards. Background `{colors.surface-card}` (cream), rounded `{rounded.lg}`, padding `{spacing.lg}` (24px). Top row has avatar + name + role; below sits the testimonial in `{typography.body-md}`.
+
+**`pricing-tier-card`** — Standard tier card. Background `{colors.canvas}` with hairline, rounded `{rounded.lg}`, padding `{spacing.xl}` (32px).
+
+**`pricing-tier-card-featured`** — The featured tier flips to `{colors.brand-teal}` (deep teal-green). The teal surface IS the featured signal.
+
+**`expert-card`** — Used on /experts page. Background `{colors.canvas}` with hairline, rounded `{rounded.lg}`, padding `{spacing.lg}`. Carries an avatar at top, expert name, specialization, and a "Book session" link.
+
+### Inputs & Forms
+
+**`text-input`** — Background `{colors.canvas}`, text `{colors.ink}`, type `{typography.body-md}`, rounded `{rounded.md}` (12px), padding 12px × 16px, height 44px. 1px hairline border.
+
+**`text-input-focused`** — Border thickens to ink for emphasis.
+
+### Tabs / Badges
+
+**`category-tab`** + **`category-tab-active`** — Pill-shaped tabs in sub-nav. Inactive: transparent + muted text. Active: cream-card background + ink text. Padding 8px × 16px.
+
+**`badge-pill`** — Small cream-fill pill labels in `{typography.caption}` (13px / 500), rounded `{rounded.pill}`.
+
+### CTA / Footer
+
+**`cta-band-illustrated`** — Pre-footer "Turn your growth ideas into reality today" band. Background `{colors.surface-soft}`, rounded `{rounded.xl}`, padding 80px. Carries an h2 in `{typography.display-md}`, a sub-line, and a `{component.button-primary}` — usually paired with a 3D illustration of a mascot or scene.
+
+**`footer`** — Cream-tinted footer (NOT dark navy unlike most SaaS sites). Background `{colors.surface-soft}`, text `{colors.body}`. 4-column link list. Vertical padding 80px. Often features a horizon-style 3D mountain illustration at the very bottom — Clay's signature footer mountain.
+
+## Do's and Don'ts
+
+### Do
+- Anchor every page on the cream canvas (`{colors.canvas}` — #fffaf0). The warm tint differentiates Clay from cool-gray data sites.
+- Use 3D claymation illustrations as hero artifacts. Hand-crafted 3D characters and mountains ARE the brand.
+- Cycle saturated feature cards across the page — pink → teal → lavender → peach → ochre → cream. Repeating the same color twice in a row reads as off-rhythm.
+- Use Plain Black at weight 500 with negative letter-spacing on every display headline.
+- Show product UI fragments inside saturated feature cards. The brand voltage is product-driven, not abstract.
+- Use cream footer (NOT dark). Clay deliberately closes pages with warm cream rather than the standard dark-footer SaaS template.
+- Anchor every band with `{spacing.section}` (96px) vertical rhythm.
+
+### Don't
+- Don't use cool grays for canvas. The cream tint is non-negotiable.
+- Don't use a 7th brand-color card. The 6-color palette is saturated enough.
+- Don't bold display weight beyond 500. Plain Black at 700 reads as bombastic.
+- Don't repeat the same brand-color card twice in a row.
+- Don't replace claymation illustrations with flat vector art. The hand-crafted 3D character IS the brand voice.
+- Don't use a dark footer. The cream footer is part of the system's warm-throughout pacing.
+- Don't add hover state styling beyond what the system already encodes.
+
+## Responsive Behavior
+
+### Breakpoints
+
+| Name | Width | Key Changes |
+|---|---|---|
+| Mobile | < 768px | Hamburger nav; hero h1 72→36px; hero-illustration-card stacks below; feature grids 1-up; pricing 1-up |
+| Tablet | 768–1024px | Top nav tightens; feature cards 2-up; pricing 2-up |
+| Desktop | 1024–1440px | Full top-nav; 3-up feature cards; 3-up pricing tiers |
+| Wide | > 1440px | Same as desktop with more breathing room; max content 1280px |
+
+### Touch Targets
+- `{component.button-primary}` at minimum 44 × 44px (matches WCAG AAA).
+- `{component.text-input}` height is 44px.
+
+### Collapsing Strategy
+- Top nav collapses to hamburger at < 768px.
+- Hero 7-5 grid → single-column on mobile.
+- Feature card grids reduce columns rather than scaling.
+- Saturated feature cards retain their colored fill at every breakpoint.
+- Pricing tier cards collapse 4 → 2 → 1.
+
+## Iteration Guide
+
+1. Focus on ONE component at a time. Reference its YAML key (`{component.feature-card-pink}`, `{component.pricing-tier-card-featured}`).
+2. Pick the right brand-color card for the feature: pink for outbound/sequencer, teal for enterprise/featured, lavender for AI-agent products, peach for general SaaS warmth, ochre for community / experts.
+3. Variants of an existing component (`-active`, `-disabled`) live as separate entries.
+4. Use `{token.refs}` everywhere — never inline hex.
+5. Never document hover.
+6. Display headlines stay Plain Black 500 with negative letter-spacing. Body stays Inter 400.
+7. The cream-throughout palette is a system contract — don't add a dark footer.
+
+## Known Gaps
+
+- Plain Black is licensed to Clay and not available as a public web font; Inter weight 500 with negative letter-spacing is the closest substitute.
+- 3D claymation illustrations are commissioned assets, not system tokens — they're rendered per-page.
+- The mascot characters (named characters that recur across the site) are illustrated assets; their exact lineage and naming are not formalized in tokens.
+- Animation and transition timings (3D illustration parallax on scroll, feature card entrance animations) are not in scope.
+- Form validation states beyond `{component.text-input-focused}` are not extracted.
+- The actual Clay product surface (in-app data tables, formula editor, agent builder) shares some tokens with the marketing site but adds many product-specific components that are out of scope.
+ "Design a boutique yoga studio landing page that feels calm, intentional, and grounded — the antidote to high-intensity gym culture.
+
+Visual Strategy:
+Imagery: soft morning light through large windows, students in postures, plants, mat textures.
+Photography: warm natural light, shallow depth of field.
+Composition: open negative space, diagonal sunbeams.
+
+Color Palette:
+Primary Colors: warm sand, sage green, off-white.
+Accent Colors: terracotta, dusk pink.
+Background: subtle paper or linen texture.
+
+Typography:
+Headings: humanist serif, comfortable weight.
+Body Text: airy line-height.
+Layout: generous margins; one idea per scroll viewport.
+
+Page Structure:
+Hero Section: a slow-breathing visual + studio name + booking CTA.
+Practices: vinyasa / yin / restorative / breathwork.
+Teacher Bios: photo + personal ""why I teach"" quote.
+Class Schedule: calendar view with seat availability.
+First Class Free: prominent capture form.
+
+Interaction Details:
+- Hero visual subtly expands and contracts on a 4-second breath cycle.
+- Headlines fade up with a soft 600ms ease as they enter view.
+- Teacher quotes type out character-by-character on hover.
+- Schedule rows expand to reveal the studio room and prerequisites.
+- A tiny chime plays once on first scroll (opt-in).
+- Hover on any image triggers a slow Ken Burns zoom.
+
+Overall Vibe: calm, welcoming, intentional, restorative." 
+Realidad:
+El prompt anterior es un apoyo “soporte” inspiracional, lo que necesitamos es:
+
+Página web full stack con react nive profesional, que nos permita exhibir el trabajo de un artista digital. 
+¿A que se refiere con trabajo? 
+A: iconos, imágenes ilustradas, fondos realizados, proceso creativo, bocetos de como avanza un mismo trabajo (adjuntaré ejemplo de los adjuntos que llevará). 
+¿Qué necesidad debemos resolver?
+-Poder exhibir el arte de manera funcional y atractiva. Para ello se requiere secciones para 
+Proceso creativo
+Animaciones
+Iconos/Stickers
+Ilustraci´no digital
+Informacion de la artista:
+1.	Eso para ilustración de fondos de animación 
+Aunque pueda ser la rama en la que llevo menos tiempo, he ido aprendiendo rápido y encontrado cariño en este ámbito. Los tres primeros fondos fueron comisiones que se dejaron seccionadas y listas para editar en post producción con facilidad 
+Los últimos dos, debo mencionar, fueron recreando fondos existentes del Jardín de las Palabras y Frieren Beyond the Journey... aunque a este último le agregué mi toque peludo
+2.	 [CODÉ], 
+• Nox's muse • [VGen],  — 4:21 p. m.
+Lo edité
+3.	Ahora la parte difícil... encontrar animaciones que no sean porno para poner ALSJS
+4.	• Nox's muse • [VGen],  — 4:42 p. m.
+Animación 2D Frame x Frame 
+Cuento también con experiencia en el rubro de animación japonesa por parte de Koeda Animation, más específicamente en el área se Douga (In Between) y Shiage (Color). Sin contar los pasos de correcciones, soy de los últimos pasos en la animacion antes de pasar a post producción y poder ser emitido. 
+Algunos de los trabajos publicados en los que he trabajado incluyen (pero no se limitan): 
+•	Capítulo 02 de "Fate Strange Fake" (apartado de color)
+•	Capítulo 03 de "Kimi to Boku" (apartado de color)
+•	Video musical de "Reloj de Arena" por Aki Chan (apartado de color)
+•	Trailer del videojuego "Alice at the End of Her Life" (apartado de color)
+•	The "Casebook of Arne" (apartado de Douga)
+También cuento con experiencia en animaciones NSFW en el apartado de Douga y Color 
+Por último, he realizado trabajo de animación de modo independiente para clientes. "Juanburgueso" es la mascota firma del director y trabajamos en su rediseño, guías de uso del personaje y la animación de intro. Dicha animación se trabajo mixta, utilizando el método de Frame x Frame así como el programa After Effectcs, con un continuo uso de las keyframes.
+Licenciada en Diseño y Comunicación Visual Diana Hernández Aka ArthemysD 23 años Llevo trabajando como freelance desde hace 5 años Experiencia de 2 años en ventas Llevo trabajando en Koeda Animation desde 2025 a la fecha Llevo haciendo trabajo de diseño para el Colegio de Ingenieros Civiles de San Juan del Río desde hace 4 años aproximadamente
+Una de mis partes favoritas son las ilustraciones de mascotas. Me encargo de tomar una foto existe y re inventarla para que exprese la personalidad del animal. 
+Mi manejo de After Effects me permite hacer dar vida a mis ilustraciones, principalmente con la herramienta de "Puppet". Desde el comienzo planifico la ilustración para dar el correcto acomodo de las cosas y hacer la magia en post producción.
+Hay que hacer sección de “sobre mi” y “contáctame”  
+A la artista le inspira muchísimo y en gran medida el personaje de league of legends “jinx” por eso escogió esa paleta de colores, aunque no contamos cn assets sobre este persnaje de league of legends tan icónico, podemos imitar su paleta de colores cono precisión quirúrgica y también la estética “punk” del mismo. Aquí podríamos crear o renderizar vectores con un estilo punk 
+Usemos bibliotecas de diseño uix ui modernas como REICON Reicon
+An open-source SVG icon library featuring 2,700+ icons with dedicated packages for React, React Native, Vue 3, Svelte, vanilla JavaScript, CDN runtime, Figma design workspace, and VS Code code editor.
+Website · Browse Icons · Usage Guide · npm
+             
+
+   Overview
+Reicon provides a comprehensive set of SVG icons designed on a strict 24×24 pixel grid. The library is built for high-performance web applications, offering complete tree-shakeability, zero external dependencies, and optimized wrappers for multiple frameworks.
+All icons are maintained in two weights:
+•	Outline: 1.5px stroke-width with consistent corner radiuses.
+•	Filled: Solid path structures designed for active states or highlighted UI elements.
+   Packages & Ecosystem
+Logo	Package	Version	Downloads	Links
+ 	reicon	 	 	Guide · Source
+
+ 	reicon-react	 	 	Guide · Source
+
+ 	reicon-react-native	 	 	Guide · Source
+
+ 	reicon-vue	 	 	Guide · Source
+
+ 	reicon-svelte	 	 	Guide · Source
+
+ 	reicon-figma	—	—	Guide · Source
+
+ 	reicon-vscode	 	—	Guide · Source
+
+ 	reicon-svg	—	—	Guide · Download
+
+   Quick Start
+React Usage
+import { Heart } from 'reicon-react';
+
+function App() {
+  return <Heart size={24} weight="Outline" color="#000000" />;
+}
+Vue 3 Usage
+<script setup>
+import { Heart } from 'reicon-vue';
+</script>
+
+<template>
+  <Heart :size="24" weight="Filled" color="#000000" />
+</template>
+Svelte Usage
+<script>
+import { Heart } from 'reicon-svelte';
+</script>
+
+<Heart size={24} weight="Outline" color="#000000" />
+HTML / CDN Usage
+<!-- Load the library -->
+<script src="https://unpkg.com/reicon/cdn/reicon.min.js"></script>
+
+<!-- Render the web component -->
+<re-icon icon="heart" weight="outline" size="24"></re-icon>
+   Project Structure
+This project is organized as a monorepo holding the core dataset, package compilations, build scripts, and the showcase documentation site.
+For a detailed file-by-file breakdown of the directory layout and file responsibilities, see the Project Structure Guide.
+   Design System
+The documentation site uses a custom layout system built using CSS custom variables and Tailwind CSS utility tokens.
+For the specifications on typography scales, responsive breakpoints, animations, and reusable site components, see the Design System Guide.
+________________________________________
+   Development & Building
+Running the Documentation Site
+To start the React/Vite development server locally for the documentation website:
+npm install
+npm run dev
+Compiling Packages from Source
+The core icons are maintained in data/icon-data.json, which acts as the single source of truth for the entire library.
+1.	Modify or add icons inside data/icon-data.json.
+2.	Run the compiler scripts to update all framework packages and CDN runtimes:
+npm run build:packages
+3.	Rebuild the website with updated package paths and prerendered SEO meta tags:
+npm run build:full
+   Contributing
+Contributions to the codebase, packages, or documentation are welcome. Please refer to our Contributing Guidelines for conventions on pull requests, testing, and formatting.
+   Our Stargazers
+ 
+
+   Credits
+Reicon base icons are built using elements from:
+•	Solar Icons designed by 480 Design (CC BY 4.0) and package maintained by Saoudi H. (MIT License)
+•	Zappicon (licensed under the Zappicon License)
+   License
+MIT License - Copyright (c) 2026 Dev Chauhan.
+IMPLEMETNA ESTA LIBRERIA PARA ANIMACIONES, ES GOD Maravillosa biblioteca sin dependencias para hacer animaciones de texto en etiquetas y botones.
+
+Funciona con JavaScript, React, Vue, Solid y Svelte.
+
+> pnpm i slot-text
+# slot-text
+
+> Dependency-free text roll animation for tiny, tactile UI labels. Pure CSS transforms, no runtime dependencies. Browser-only DOM utility. Works best on short labels, buttons, counters, and command text.
+
+## Install
+
+```bash
+npm install slot-text
+```
+
+Import the CSS once before using the animation: `import "slot-text/style.css";`
+
+## Usage: Vanilla
+
+```ts
+import "slot-text/style.css";
+import { slotText, chromatic } from "slot-text";
+
+const label = slotText(document.querySelector("#copy"), "Copy");
+label.set("Copied", { direction: "up", color: chromatic() });
+label.set("Copy", { direction: "down" });
+label.destroy();
+```
+
+## Usage: React
+
+```tsx
+import "slot-text/style.css";
+import { SlotText } from "slot-text/react";
+import { chromatic } from "slot-text";
+
+<SlotText
+  text={copied ? "Copied" : "Copy"}
+  options={{
+    direction: copied ? "up" : "down",
+    skipUnchanged: false,
+    color: copied ? chromatic() : undefined,
+  }}
+/>
+```
+
+## Usage: Vue
+
+```vue
+<script setup lang="ts">
+import "slot-text/style.css";
+import { SlotText } from "slot-text/vue";
+import { chromatic } from "slot-text";
+
+const options = { direction: "up", skipUnchanged: false, color: chromatic() } as const;
+</script>
+
+<template>
+  <SlotText text="Copied" :options="options" />
+</template>
+```
+
+## Usage: Solid
+
+```tsx
+import "slot-text/style.css";
+import { createSignal } from "solid-js";
+import { chromatic } from "slot-text";
+import { slotText } from "slot-text/solid";
+
+const [copied, setCopied] = createSignal(false);
+
+<span
+  use:slotText={{
+    text: copied() ? "Copied" : "Copy",
+    options: {
+      direction: copied() ? "up" : "down",
+      skipUnchanged: false,
+      color: copied() ? chromatic() : undefined,
+    },
+  }}
+/>
+```
+
+## Usage: Svelte
+
+```svelte
+<script lang="ts">
+  import "slot-text/style.css";
+  import { chromatic } from "slot-text";
+  import { slotText } from "slot-text/svelte";
+
+  let copied = false;
+</script>
+
+<span
+  use:slotText={{
+    text: copied ? "Copied" : "Copy",
+    options: {
+      direction: copied ? "up" : "down",
+      skipUnchanged: false,
+      color: copied ? chromatic() : undefined,
+    },
+  }}
+></span>
+```
+
+## API
+
+- `slotText(element, text, options?)` — vanilla controller with `.set(text, options?)`, `.flash(text, options?)`, and `.destroy()`
+- `SlotText` component from `slot-text/react` and `slot-text/vue` (optional peer deps; plain JS users do not need them)
+- `slotText` directive from `slot-text/solid` and `slot-text/svelte` (optional peer deps)
+- Low-level helpers: `buildSlotText`, `animateSlotText`, `chromatic` from `slot-text`
+
+## Options
+
+```ts
+type SlotOptions = {
+  direction?: "up" | "down";       // default "down"
+  stagger?: number;                // default 45
+  duration?: number;               // default 300
+  exitOffset?: number;             // default 50
+  easing?: string;                 // default "cubic-bezier(0.34, 1.56, 0.64, 1)"
+  bounce?: number;                 // default 0.6
+  color?: string | ((index: number, total: number) => string);
+  colorFade?: number;              // default 280
+  skipUnchanged?: boolean;         // default true
+  interrupt?: boolean;             // default true
+};
+```
+PARA LOS CARROUSELES  Y LA GALERIA USA BLOSOM Blossom Carousel
+  
+
+Blossom Carousel is the first carousel library that builds on native browser scrolling instead of replacing it. It provides a small drag enhancement for pointer devices while maintaining the core interaction model, performance, and accessibility of a real scroll container.
+
+🥇 Native scrolling: Full performance and accessibility.
+🚀 Dragging: Custom physics-based dragging for all pointer types.
+✨ No abstraction: use all native web API's.
+💡 Configure with CSS: Works with native scroll-snap, position sticky and scroll-driven animations and more.
+🪶 0kb on touch devices: Blossom only loads when a fine pointer device is detected.
+🧱 Framework ready: Components for React, Vue, Svelte and Web Components.
+🚧 Experimental cyclical scrolling: Allows the carousel to infinitely loop.
+Installation
+Framework	Installation Command	Docs
+Vue	npm install @blossom-carousel/vue	Vue Docs
+React	npm install @blossom-carousel/react	React Docs
+Svelte	npm install @blossom-carousel/svelte	Svelte Docs
+Web Component	npm install @blossom-carousel/web	Web Component Docs
+Core	npm install @blossom-carousel/core	Core Docs
+Agent Skills
+Blossom Carousel's Agent Skills help AI coding assistants give package-specific guidance.
+
+Install the skills Compatible agents (Cursor, Claude Code, etc.) can discover and use skills automatically.
+
+npx skills add https://www.blossom-carousel.com
+Examples
+Explore ready-to-copy carousel patterns grouped by complexity.
+
+See all examples
+
+Migration Guides
+From	Migration Guide
+Embla	Migration from Embla
+Swiper	Migration from Swiper
+Splide	Migration from Splide
+Slick	Migration from Slick
+Flickity	Migration from Flickity
+
+React and Next.js
+
+Copy page
+
+Use Blossom Carousel in React and Next.js apps with tsx, global styles, and semantic root elements.
+Install
+
+pnpm
+
+bun
+
+yarn
+
+npm
+
+pnpm add @blossom-carousel/react
+React usage
+
+import { BlossomCarousel } from "@blossom-carousel/react";
+import "@blossom-carousel/react/style.css";
+
+export function App() {
+  return (
+    <BlossomCarousel>
+      {Array.from({ length: 12 }, (_, index) => (
+        <div key={index}>Slide {index + 1}</div>
+      ))}
+    </BlossomCarousel>
+  );
+}
+Next.js setup
+Import the stylesheet from a global entry point.
+
+app/layout.tsx
+
+import "@blossom-carousel/react/style.css";
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
+}
+Then render the carousel from a component.
+
+BlossomCarousel.tsx
+
+import { BlossomCarousel } from "@blossom-carousel/react";
+
+export function FeaturedCarousel() {
+  return (
+    <BlossomCarousel>
+      {Array.from({ length: 12 }, (_, index) => (
+        <div key={index}>Slide {index + 1}</div>
+      ))}
+    </BlossomCarousel>
+  );
+}
+Semantic root element
+
+<BlossomCarousel as="ul">
+  {Array.from({ length: 12 }, (_, index) => (
+    <li key={index}>Slide {index + 1}</li>
+  ))}
+</BlossomCarousel>;
+Navigation controls
+Place previous, next, and dot controls outside the carousel with <BlossomPrev>, <BlossomNext>, and <BlossomDots>. Link them to the carousel with an id on <BlossomCarousel> and a matching for prop on each control.
+
+
+import {
+  BlossomCarousel,
+  BlossomPrev,
+  BlossomNext,
+  BlossomDots,
+} from "@blossom-carousel/react";
+import "@blossom-carousel/react/style.css";
+
+export function Gallery() {
+  return (
+    <>
+      <BlossomCarousel id="gallery" className="carousel">
+        {Array.from({ length: 12 }, (_, index) => (
+          <div key={index} data-blossom-slide className="slide">
+            Slide {index + 1}
+          </div>
+        ))}
+      </BlossomCarousel>
+
+      <div className="controls">
+        <BlossomPrev for="gallery" />
+        <BlossomDots for="gallery" />
+        <BlossomNext for="gallery" />
+      </div>
+    </>
+  );
+}
+Mark slides with data-blossom-slide so dots know which elements to track.
+
+Custom dot appearance
+Use the default slot on <BlossomDots> to replace the built-in dot UI:
+
+
+<BlossomDots for="gallery">
+  {({ index, active }) => (
+    <span className={active ? "active" : undefined}>{index + 1}</span>
+  )}
+</BlossomDots>
+Theme the default dots with CSS custom properties on the component or any ancestor:
+
+--blossom-dots-gap
+--blossom-dot-size
+--blossom-dot-radius
+--blossom-dot-color
+--blossom-dot-opacity
+--blossom-dot-hover-opacity
+--blossom-dot-active-opacity
+See the Buttons and Dots examples for live demos.
+
+Overscroll API
+Tap into Blossom's drag engine's overscroll behavior to create your own style.
+
+
+import { useRef } from "react";
+import { BlossomCarousel } from "@blossom-carousel/react";
+
+export function App() {
+  const blossomCarousel = useRef<HTMLElement | null>(null);
+
+  function onOverscroll(event: CustomEvent<{ left: number }>) {
+    // prevent and overwrite Blossom's default rubberbanding effect
+    event.preventDefault();
+
+    const overScroll = event.detail.left;
+
+    Array.from(blossomCarousel.current?.children ?? []).forEach((slide) => {
+      (slide as HTMLElement).style.transform = `scale(${1 - overScroll * 0.1})`;
+    });
+  }
+
+  return (
+    <BlossomCarousel
+      ref={blossomCarousel}
+      onOverscroll={(event) => {
+        onOverscroll(event as CustomEvent<{ left: number }>);
+      }}
+    >
+      {Array.from({ length: 12 }, (_, index) => (
+        <div key={index}>Slide {index + 1}</div>
+      ))}
+    </BlossomCarousel>
+  );
+}
+
+LEST GO! 
