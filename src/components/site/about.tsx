@@ -102,14 +102,12 @@ export function About() {
           {/* Left: portrait + quote + inspiration */}
           <div className="lg:col-span-5">
             <div className="relative">
-              <div className="absolute -inset-3 halftone-pink opacity-30 rounded-2xl" />
               <div className="relative overflow-hidden rounded-xl border border-white/10">
                 <img
                   src="/gallery/Portrait_Aboutme.png"
                   alt="Diana Hernández - ARTHEMYS_D"
                   className="aspect-[4/5] w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#07070f] via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <PunkBadge variant="pink" className="mb-2">
                     @ARTHEMYS_D

@@ -56,12 +56,12 @@ export function PunkNav() {
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <a href="#top" className="group flex items-center gap-2">
-          <span className="relative inline-flex h-8 w-8 items-center justify-center rounded-md bg-[#ff1b6b] text-[#07070f] font-display text-sm glow-pink">
-            A
-            <span className="absolute -right-1 -top-1 h-2 w-2 rounded-full bg-[#00e5ff] animate-blink" />
+          <span className="relative inline-flex h-8 w-8 items-center justify-center rounded-md bg-[#d8b4fe] text-[#07070f] font-display text-sm glow-pink">
+            W
+            <span className="absolute -right-1 -top-1 h-2 w-2 rounded-full bg-[#a78bfa] animate-blink" />
           </span>
           <span className="font-display text-sm tracking-tight">
-            ARTHEMYS<span className="text-[#ff1b6b]">_D</span>
+            ARTHEMYS<span className="text-[#ff1b6b]">_WEB</span>
           </span>
         </a>
 

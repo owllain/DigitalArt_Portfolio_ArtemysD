@@ -41,6 +41,9 @@ export default function Home() {
 
       <main className="flex-1">
         <Hero />
+      </main>
+
+      <div className="relative overflow-hidden bg-[#07070f]">
         <About />
         <Process />
         <Animations />
@@ -48,9 +51,8 @@ export default function Home() {
         <Icons />
         <Illustration />
         <Contact />
-      </main>
-
-      <Footer />
+        <Footer />
+      </div>
     </div>
   )
 }

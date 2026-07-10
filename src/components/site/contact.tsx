@@ -106,6 +106,41 @@ export function Contact() {
             diseño. Cuéntame tu proyecto y te respondo con una propuesta y
             tiempos.
           </p>
+
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <a
+              href="https://vgen.co/ArthemysD"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex"
+            >
+              <PunkBadge variant="cyan">vgen.co</PunkBadge>
+            </a>
+            <a
+              href="https://www.artstation.com/arthemys_d"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex"
+            >
+              <PunkBadge variant="purple">ArtStation</PunkBadge>
+            </a>
+            <a
+              href="https://www.instagram.com/arthemys_d"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex"
+            >
+              <PunkBadge variant="pink">Instagram</PunkBadge>
+            </a>
+            <a
+              href="https://x.com/Artsheia?t=zZJhAW3Imu0oHBvY1FPIgQ&s=09"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex"
+            >
+              <PunkBadge variant="yellow">X</PunkBadge>
+            </a>
+          </div>
         </div>
 
         <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -232,12 +267,17 @@ export function Contact() {
                   <span className="text-[#00e5ff]">@ARTHEMYS_D</span>
                 </li>
                 <li>
-                  <span className="text-muted-foreground">Estudio:</span>{' '}
-                  <span className="text-foreground">Koeda Animation</span>
+                  <span className="text-muted-foreground">Email:</span>{' '}
+                  <a
+                    href="mailto:diana.clapes133@gmail.com"
+                    className="text-foreground underline decoration-[#ff1b6b]/30"
+                  >
+                    diana.clapes133@gmail.com
+                  </a>
                 </li>
                 <li>
-                  <span className="text-muted-foreground">Base:</span>{' '}
-                  <span className="text-foreground">San Juan del Río, MX</span>
+                  <span className="text-muted-foreground">Estudio:</span>{' '}
+                  <span className="text-foreground">Koeda Animation</span>
                 </li>
                 <li>
                   <span className="text-muted-foreground">Estado:</span>{' '}

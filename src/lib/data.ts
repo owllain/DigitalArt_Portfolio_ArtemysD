@@ -49,8 +49,7 @@ export const ILLUSTRATION_PROCESS_SETS: ArtworkSet[] = [
     items: [
       { url: '/gallery/Carrusel2_1.png', type: 'image', label: 'Boceto Inicial' },
       { url: '/gallery/Carrusel2_2.png.png', type: 'image', label: 'Lineart Limpio' },
-      { url: '/gallery/Carrusel2_3.png.png', type: 'image', label: 'Render con Capas' },
-      { url: '/gallery/Carrusel2_Final.mp4', type: 'video', label: 'Animación final con Puppet' }
+      { url: '/gallery/Carrusel2_3.png.png', type: 'image', label: 'Render con Capas' }
     ]
   },
   {
@@ -79,9 +78,9 @@ export const ILLUSTRATION_PROCESS_SETS: ArtworkSet[] = [
     tags: ['graffiti', 'street-art', 'character-design', 'rough', 'ink'],
     featured: false,
     items: [
-      { url: '/gallery/Carrusel4_1.png', type: 'image', label: 'Boceto / Pose' },
-      { url: '/gallery/Carrusel4_2.jpg', type: 'image', label: 'Lineart y Base' },
-      { url: '/gallery/Carrusel4_3.jpg', type: 'image', label: 'Render Final' }
+      { url: '/gallery/estatico-1.png', type: 'image', label: 'Composición Estática' },
+      { url: '/gallery/mJ2YUyi-1.mp4', type: 'video', label: 'Animación 1' },
+      { url: '/gallery/mPixYA0-1.mp4', type: 'video', label: 'Animación 2' }
     ]
   }
 ]
@@ -112,8 +111,7 @@ export const ANIMATION_SETS: ArtworkSet[] = [
     tags: ['douga', 'timing', 'action', 'fluidity'],
     featured: true,
     items: [
-      { url: '/gallery/Animacion2_1.png', type: 'image', label: 'Boceto de Estructura' },
-      { url: '/gallery/Animación2_2.mp4', type: 'video', label: 'Loop de Movimiento' }
+      { url: '/gallery/Carrusel2_Final.mp4', type: 'video', label: 'Animación Final' }
     ]
   },
   {
@@ -126,8 +124,8 @@ export const ANIMATION_SETS: ArtworkSet[] = [
     tags: ['squash-stretch', 'timing', 'transition', 'clean-up'],
     featured: false,
     items: [
-      { url: '/gallery/Animacion3_1.png', type: 'image', label: 'Fotograma de Transición' },
-      { url: '/gallery/Animacion3_2.mp4', type: 'video', label: 'Animación Terminada' }
+      { url: '/gallery/Animacion5_1.png', type: 'image', label: 'Fotograma de Transición' },
+      { url: '/gallery/Animacion5_2.mp4', type: 'video', label: 'Animación Terminada' }
     ]
   },
   {
@@ -140,37 +138,8 @@ export const ANIMATION_SETS: ArtworkSet[] = [
     tags: ['shiage', 'flat-color', 'ink-lineart', 'shadows'],
     featured: false,
     items: [
-      { url: '/gallery/Animacion4_1.png', type: 'image', label: 'Lineart Limpio' },
-      { url: '/gallery/Animacion4_2.mp4', type: 'video', label: 'Animación con Color final' }
-    ]
-  },
-  {
-    id: 'anim-set-5',
-    title: 'Escena Narrativa / Gesto de Personaje',
-    category: 'animation',
-    description: 'Gesticulación sutil y micro-animaciones en cabello y ropa para transmitir emociones. Animación tradicional frame a frame combinada con After Effects para el acabado de color.',
-    year: '2025',
-    role: 'Douga & Shiage',
-    tags: ['acting', 'hair-motion', 'wind-effect', 'character'],
-    featured: true,
-    items: [
-      { url: '/gallery/Animacion5_1.png', type: 'image', label: 'Keyframe Detallado' },
-      { url: '/gallery/Animacion5_2.mp4', type: 'video', label: 'Secuencia Animada' }
-    ]
-  },
-  {
-    id: 'anim-set-6',
-    title: 'Ciclo de Caminata / Walk Cycle completo',
-    category: 'animation',
-    description: 'Estudio exhaustivo del ciclo de caminata de un personaje desde el boceto, el color base plano y la animación fluida en video con post-procesamiento.',
-    year: '2024',
-    role: 'Animación Completa',
-    tags: ['walk-cycle', 'proceso', 'sketch-to-color', 'cycles'],
-    featured: false,
-    items: [
-      { url: '/gallery/Animacion6_1.png', type: 'image', label: 'Boceto Clave' },
-      { url: '/gallery/Animacion6_2.jpg', type: 'image', label: 'Color Base' },
-      { url: '/gallery/Animacion6_3.mp4', type: 'video', label: 'Animación Final' }
+      { url: '/gallery/Animacion3_1.png', type: 'image', label: 'Lineart Limpio' },
+      { url: '/gallery/Animacion3_2.mp4', type: 'video', label: 'Animación con Color final' }
     ]
   }
 ]
@@ -233,22 +202,9 @@ export const PET_SETS: ArtworkSet[] = [
     tags: ['retratos', 'mascotas', 'comisión', 'gatos', 'perros'],
     featured: true,
     items: [
-      { url: '/gallery/Otros_1.jpg', type: 'image', label: 'Gatito Cósmico Punk' },
-      { url: '/gallery/Otros_2.jpg', type: 'image', label: 'Retrato de Cachorro Neón' }
-    ]
-  },
-  {
-    id: 'pet-set-2',
-    title: 'Gatitos Puppet de After Effects',
-    category: 'pet',
-    description: 'Animaciones cortas creadas con la herramienta Puppet de After Effects a partir de retratos de mascotas ilustrados previamente por capas. Movimientos fluidos e interactivos que dan vida al retrato digital.',
-    year: '2025',
-    role: 'Rigging e Ilustración',
-    tags: ['after-effects', 'puppet-rig', 'animation', 'character'],
-    featured: true,
-    items: [
-      { url: '/gallery/mJ2YUyi-1.mp4', type: 'video', label: 'Gato espacial Puppet' },
-      { url: '/gallery/mPixYA0-1.mp4', type: 'video', label: 'Gato atómico en movimiento' }
+      { url: '/gallery/Sticker_1.jpg', type: 'image', label: 'Retrato de Mascota 1' },
+      { url: '/gallery/Sticker_2.png', type: 'image', label: 'Retrato de Mascota 2' },
+      { url: '/gallery/Sticker_3.png', type: 'image', label: 'Retrato de Mascota 3' }
     ]
   }
 ]
@@ -257,9 +213,9 @@ export const PET_SETS: ArtworkSet[] = [
 export const STICKER_SETS: ArtworkSet[] = [
   {
     id: 'sticker-set-1',
-    title: 'Street-Art Stickers (Colección Vectorial)',
+    title: 'Stickers e iconos ready-to-print',
     category: 'icon',
-    description: 'Sets de pegatinas diseñadas para impresión die-cut. Elementos de la cultura callejera, armas fantásticas, tiburones y símbolos punk. Trazos vectoriales gruesos neón sobre fondo negro.',
+    description: 'Assets listos para impresión y redes sociales. Incluye stickers de estilo street-art, iconos y gráficos de alto contraste ideales para arte die-cut.',
     year: '2024',
     role: 'Diseño de Vector / Stickers',
     tags: ['stickers', 'die-cut', 'vectorial', 'neon', 'icons'],
@@ -270,21 +226,6 @@ export const STICKER_SETS: ArtworkSet[] = [
       { url: '/gallery/Stick_3.jpg', type: 'image', label: 'Stickers Impresos' },
       { url: '/gallery/Stick_4.png', type: 'image', label: 'Skull Punk' },
       { url: '/gallery/Stick_5.png', type: 'image', label: 'Colección Completa 02' }
-    ]
-  },
-  {
-    id: 'sticker-set-2',
-    title: 'Neon Badges / Iconos de Redes Sociales',
-    category: 'icon',
-    description: 'Iconos y pins diseñados con estética retro-consola y graffiti digital, listos para plataformas de streaming (Twitch/YouTube) o impresión.',
-    year: '2025',
-    role: 'Iconografía',
-    tags: ['twitch-badges', 'neon', 'merchandising', 'pins'],
-    featured: false,
-    items: [
-      { url: '/gallery/Sticker_1.jpg', type: 'image', label: 'Pins de Neón' },
-      { url: '/gallery/Sticker_2.png', type: 'image', label: 'Shark Pin' },
-      { url: '/gallery/Sticker_3.png', type: 'image', label: 'Gatito Cósmico Badge' }
     ]
   }
 ]

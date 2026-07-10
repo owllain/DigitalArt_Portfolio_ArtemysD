@@ -19,7 +19,13 @@ export async function POST(req: NextRequest) {
     }
 
     // TODO: enviar email con Resend u otro proveedor
-    // await resend.emails.send({ from: '...', to: 'diana@...', subject: '...', ... })
+    // const contactEmail = process.env.CONTACT_EMAIL || 'diana.clapes133@gmail.com'
+    // await resend.emails.send({
+    //   from: 'no-reply@arthemysd.com',
+    //   to: contactEmail,
+    //   subject: `Nuevo mensaje de ${name}`,
+    //   text: `${message}\n\nCorreo: ${email}\nTipo: ${projectType}\nPresupuesto: ${budget}`,
+    // })
 
     console.log('[contact]', { name, email, projectType, message, budget })
 

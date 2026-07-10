@@ -50,6 +50,9 @@
   --color-neon-purple: #9d4edd;
   --color-ink: #0a0a14;
   --color-canvas: #07070f;
+  --color-mauve: #d8b4fe;
+  --color-periwinkle: #c7d2fe;
+  --color-pastel-cyan: #c7f1ff;
 }
 
 :root {
@@ -242,6 +245,10 @@
   .scroll-punk::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(180deg, #ff1b6b, #00e5ff);
   }
+
+  .bg-pastel-body {
+    background: linear-gradient(180deg, rgba(7, 7, 15, 0.98) 0%, rgba(248, 229, 255, 0.12) 10%, rgba(216, 180, 254, 0.16) 30%, rgba(199, 210, 254, 0.18) 55%, rgba(248, 229, 255, 0.12) 80%, rgba(7, 7, 15, 0.98) 100%);
+  }
 }
 
 /* ============ GLOBAL SCROLLBAR ============ */
@@ -340,6 +347,14 @@
 }
 
 /* Blossom carousel tweaks */
+blossom-carousel {
+  display: block !important;
+  width: 100% !important;
+  min-height: 100%;
+}
 .blossom-slide {
+  display: inline-flex !important;
   scroll-snap-align: start;
+  vertical-align: top;
+  width: 100%;
 }

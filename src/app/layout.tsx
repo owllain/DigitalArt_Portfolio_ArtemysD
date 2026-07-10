@@ -53,6 +53,18 @@ export const metadata: Metadata = {
     title: "ARTHEMYS_D — Portafolio",
     description: "Ilustración digital y animación con estética punk-cósmica.",
   },
+  icons: [
+    {
+      rel: "icon",
+      url: "/gallery/arthemys_d-tengen-toppan-purren-laggan.webp",
+      type: "image/webp",
+    },
+    {
+      rel: "shortcut icon",
+      url: "/gallery/arthemys_d-tengen-toppan-purren-laggan.webp",
+      type: "image/webp",
+    },
+  ],
 };
 
 export default function RootLayout({

@@ -2,6 +2,7 @@
 
 import { ArrowDown, Sparkles, Play } from 'reicon-react'
 import { SlotLabel } from './slot-label'
+import { PunkBadge } from './punk-badge'
 
 export function Hero() {
   return (
@@ -9,17 +10,14 @@ export function Hero() {
       id="top"
       className="relative min-h-screen flex items-center overflow-hidden grain scanlines"
     >
-      {/* Cosmic background */}
-      <div className="absolute inset-0">
-        { }
+      {/* Clean hero background */}
+      <div className="absolute inset-0 overflow-hidden">
         <img
-          src="/gallery/hero-bg.png"
+          src="/gallery/punkkuronekodream.png"
           alt=""
           aria-hidden
-          className="h-full w-full object-cover animate-breath"
+          className="absolute inset-0 h-full w-full object-cover translate-y-[40px]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#07070f]/60 via-[#07070f]/40 to-[#07070f]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#07070f] via-transparent to-[#07070f]/40" />
       </div>
 
       {/* floating decorative tags */}
@@ -48,7 +46,7 @@ export function Hero() {
           >
             <span className="h-2 w-2 rounded-full bg-[#ff1b6b] animate-blink" />
             <span className="font-mono-punk text-[11px] uppercase tracking-[0.25em] text-[#ff1b6b]">
-              Disponible para comisiones · 2025
+              Disponible para comisiones · 2026
             </span>
           </div>
 
@@ -72,16 +70,23 @@ export function Hero() {
           </h1>
 
           {/* tagline */}
-          <p
-            className="mt-7 max-w-2xl text-base sm:text-lg leading-relaxed text-muted-foreground animate-fade-up"
+          <div
+            className="mt-7 max-w-2xl animate-fade-up"
             style={{ animationDelay: '150ms' }}
           >
-            Ilustradora digital y animadora freelance.{' '}
-            <span className="text-foreground">Animación 2D frame x frame</span>,
-            fondos de animación, iconos y retratos de mascotas — todo con un
-            toque peludo y una paleta punk-cósmica inspirada en{' '}
-            <span className="neon-pink">Jinx</span>.
-          </p>
+            <div className="rounded-3xl border border-white/10 bg-[#000]/70 p-6 shadow-[0_35px_120px_-40px_rgba(0,0,0,0.8)] backdrop-blur-sm">
+              <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
+                Ilustradora digital y animadora freelance.{' '}
+                <span className="text-foreground">Animación 2D frame x frame</span>,
+                fondos de animación, iconos y retratos de mascotas — todo con un
+                toque peludo y una paleta punk-cósmica que mezcla{' '}
+                <span className="text-[#c7d2fe]">fantasía</span>,{' '}
+                <span className="text-[#d8b4fe]">sci-fi</span>,{' '}
+                <span className="text-[#00e5ff]">punk</span> y{' '}
+                <span className="text-[#ffd60a]">steampunk</span>.
+              </p>
+            </div>
+          </div>
 
           {/* CTAs */}
           <div
@@ -104,23 +109,17 @@ export function Hero() {
             </a>
           </div>
 
-          {/* mini stats */}
+          {/* mini stats as badges */}
           <div
-            className="mt-12 flex flex-wrap gap-x-10 gap-y-4 animate-fade-up"
+            className="mt-12 animate-fade-up rounded-[2rem] border border-white/10 bg-[#000]/70 p-6 shadow-[0_35px_120px_-40px_rgba(0,0,0,0.8)]"
             style={{ animationDelay: '500ms' }}
           >
-            {[
-              { n: '5', l: 'años freelance' },
-              { n: '2025', l: 'koeda animation' },
-              { n: '∞', l: 'café + gatos' },
-            ].map((s) => (
-              <div key={s.l} className="flex flex-col">
-                <span className="font-display text-3xl text-foreground">{s.n}</span>
-                <span className="font-mono-punk text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-                  {s.l}
-                </span>
-              </div>
-            ))}
+            <div className="flex flex-wrap items-center gap-3">
+              <PunkBadge variant="pink">5 años freelance</PunkBadge>
+              <PunkBadge variant="cyan">2025</PunkBadge>
+              <PunkBadge variant="purple">koeda animation</PunkBadge>
+              <PunkBadge variant="yellow">∞ café + gatos</PunkBadge>
+            </div>
           </div>
         </div>
       </div>
