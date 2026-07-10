@@ -346,15 +346,34 @@
   position: relative;
 }
 
-/* Blossom carousel tweaks */
-blossom-carousel {
+/* Blossom carousel tweaks — fix height-collapse caused by inline-block */
+[blossom-carousel] {
   display: block !important;
   width: 100% !important;
-  min-height: 100%;
+  min-height: 0;
+  overflow: clip;
 }
+
+[blossom-carousel] > * {
+  /* Keep inline-block for horizontal layout but ensure height is preserved */
+  vertical-align: top;
+  /* Prevent zero-height collapse before images load */
+  min-height: 1px;
+}
+
 .blossom-slide {
   display: inline-flex !important;
   scroll-snap-align: start;
   vertical-align: top;
   width: 100%;
+  min-height: 100%;
+}
+
+/* Ensure carousel wrapper respects aspect ratio from parent */
+.process-set-carousel,
+.animation-set-carousel,
+.background-set-carousel,
+.sticker-set-carousel,
+.pet-set-carousel {
+  height: 100%;
 }

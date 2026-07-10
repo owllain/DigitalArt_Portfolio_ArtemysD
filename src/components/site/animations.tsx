@@ -1,6 +1,6 @@
 'use client'
 
-import { BlossomCarousel, BlossomPrev, BlossomNext } from '@blossom-carousel/react'
+import { Carousel, CarouselContent, CarouselItem, useCarousel } from '@/components/ui/carousel'
 import { ArrowRight, Film, Palette, Sparkles, Star } from 'reicon-react'
 import { SectionLabel } from './section-label'
 import { PunkBadge } from './punk-badge'
@@ -104,59 +104,72 @@ export function Animations() {
   )
 }
 
+function AnimationNavButtons() {
+  const { scrollPrev, scrollNext } = useCarousel()
+  return (
+    <>
+      <button
+        type="button"
+        onClick={scrollPrev}
+        aria-label="Anterior"
+        className="pointer-events-auto flex h-7 w-7 items-center justify-center rounded-full border border-white/10 bg-[#07070f]/60 text-foreground transition hover:border-[#ff1b6b]/60 hover:text-[#ff1b6b] opacity-0 group-hover:opacity-100"
+      >
+        <ArrowRight size={12} className="rotate-180" />
+      </button>
+      <button
+        type="button"
+        onClick={scrollNext}
+        aria-label="Siguiente"
+        className="pointer-events-auto flex h-7 w-7 items-center justify-center rounded-full border border-white/10 bg-[#07070f]/60 text-foreground transition hover:border-[#ff1b6b]/60 hover:text-[#ff1b6b] opacity-0 group-hover:opacity-100"
+      >
+        <ArrowRight size={12} />
+      </button>
+    </>
+  )
+}
+
 function AnimationSetCard({ set }: { set: ArtworkSet }) {
   return (
     <div className="group flex flex-col rounded-xl border border-white/10 bg-[#0c0c18] overflow-hidden">
-      {/* Blossom Carousel */}
+      {/* Embla Carousel */}
       <div className="relative aspect-square sm:aspect-video bg-[#07070f] overflow-hidden">
-        <BlossomCarousel id={set.id} className="animation-set-carousel" repeat>
-          {set.items.map((item, itemIdx) => (
-            <div
-              key={itemIdx}
-              data-blossom-slide
-              className="blossom-slide relative w-full h-full shrink-0 flex items-center justify-center"
-            >
-              {item.type === 'video' ? (
-                <video
-                  src={item.url}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <img
-                  src={item.url}
-                  alt={item.label}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              )}
+        <Carousel opts={{ loop: true }}>
+          <CarouselContent className="-ml-0 h-full">
+            {set.items.map((item, itemIdx) => (
+              <CarouselItem key={itemIdx} className="pl-0">
+                <div className="relative w-full h-full flex items-center justify-center">
+                  {item.type === 'video' ? (
+                    <video
+                      src={item.url}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <img
+                      src={item.url}
+                      alt={item.label}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  )}
 
-              {/* Tag indicator */}
-              <div className="absolute top-3 left-3 bg-[#07070f]/80 backdrop-blur-sm border border-white/10 rounded-full px-2 py-0.5 text-[9px] font-mono-punk text-muted-foreground">
-                {item.label}
-              </div>
-            </div>
-          ))}
-        </BlossomCarousel>
+                  {/* Tag indicator */}
+                  <div className="absolute top-3 left-3 bg-[#07070f]/80 backdrop-blur-sm border border-white/10 rounded-full px-2 py-0.5 text-[9px] font-mono-punk text-muted-foreground">
+                    {item.label}
+                  </div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
 
-        {/* Blossom Prev/Next overlays */}
-        <div className="absolute inset-y-0 left-0 right-0 pointer-events-none flex items-center justify-between px-2">
-          <BlossomPrev
-            for={set.id}
-            className="pointer-events-auto flex h-7 w-7 items-center justify-center rounded-full border border-white/10 bg-[#07070f]/60 text-foreground transition hover:border-[#ff1b6b]/60 hover:text-[#ff1b6b] opacity-0 group-hover:opacity-100"
-          >
-            <ArrowRight size={12} className="rotate-180" />
-          </BlossomPrev>
-          <BlossomNext
-            for={set.id}
-            className="pointer-events-auto flex h-7 w-7 items-center justify-center rounded-full border border-white/10 bg-[#07070f]/60 text-foreground transition hover:border-[#ff1b6b]/60 hover:text-[#ff1b6b] opacity-0 group-hover:opacity-100"
-          >
-            <ArrowRight size={12} />
-          </BlossomNext>
-        </div>
+          {/* Prev/Next overlays */}
+          <div className="absolute inset-y-0 left-0 right-0 pointer-events-none flex items-center justify-between px-2">
+            <AnimationNavButtons />
+          </div>
+        </Carousel>
       </div>
 
       {/* Info card footer */}

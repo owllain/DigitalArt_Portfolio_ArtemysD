@@ -109,7 +109,7 @@ function PetSetCard({ set }: { set: ArtworkSet }) {
     <div className="group flex flex-col rounded-xl border border-white/10 bg-[#0c0c18] overflow-hidden">
       {/* Blossom Carousel */}
       <div className="relative aspect-video bg-[#07070f] overflow-hidden">
-        <BlossomCarousel id={set.id} className="pet-set-carousel" repeat>
+        <BlossomCarousel id={set.id} className="pet-set-carousel" repeat load="always">
           {set.items.map((item, itemIdx) => (
             <div
               key={itemIdx}

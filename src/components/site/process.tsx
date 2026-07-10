@@ -1,6 +1,6 @@
 'use client'
 
-import { BlossomCarousel, BlossomPrev, BlossomNext } from '@blossom-carousel/react'
+import { Carousel, CarouselContent, CarouselItem, useCarousel } from '@/components/ui/carousel'
 import { ArrowRight, Sparkles, Film } from 'reicon-react'
 import { SectionLabel } from './section-label'
 import { PunkBadge } from './punk-badge'
@@ -47,6 +47,30 @@ export function Process() {
   )
 }
 
+function ProcessNavButtons() {
+  const { scrollPrev, scrollNext } = useCarousel()
+  return (
+    <div className="flex items-center gap-2">
+      <button
+        type="button"
+        onClick={scrollPrev}
+        aria-label="Anterior"
+        className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 text-foreground transition hover:border-[#00e5ff]/60 hover:text-[#00e5ff]"
+      >
+        <ArrowRight size={14} className="rotate-180" />
+      </button>
+      <button
+        type="button"
+        onClick={scrollNext}
+        aria-label="Siguiente"
+        className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 text-foreground transition hover:border-[#00e5ff]/60 hover:text-[#00e5ff]"
+      >
+        <ArrowRight size={14} />
+      </button>
+    </div>
+  )
+}
+
 function ProcessSetCard({ set, index }: { set: ArtworkSet; index: number }) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border-b border-white/5 pb-12 last:border-0 last:pb-0">
@@ -87,83 +111,66 @@ function ProcessSetCard({ set, index }: { set: ArtworkSet; index: number }) {
         </div>
       </div>
 
-      {/* Right: Blossom Carousel for steps */}
+      {/* Right: Embla Carousel for steps */}
       <div className="lg:col-span-7 relative">
         <div className="absolute -inset-4 bg-gradient-to-tr from-[#00e5ff]/5 via-transparent to-[#ff1b6b]/5 opacity-30 rounded-2xl" />
 
-        <div className="relative overflow-hidden rounded-xl border border-white/10 bg-[#0c0c18]">
-          <BlossomCarousel
-            id={set.id}
-            className="process-set-carousel"
-            repeat
-          >
-            {set.items.map((item, itemIdx) => (
-              <div
-                key={itemIdx}
-                data-blossom-slide
-                className="blossom-slide relative w-full shrink-0 aspect-[4/3] sm:aspect-video flex items-center justify-center bg-[#07070f]"
-              >
-                {item.type === 'video' ? (
-                  <div className="relative w-full h-full">
-                    <video
-                      src={item.url}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-[#07070f]/80 backdrop-blur-sm border border-[#ff1b6b]/30 rounded-full px-2.5 py-1 text-[10px] font-mono-punk text-[#ff1b6b]">
-                      <Film size={10} className="animate-spin" />
-                      <span>ANIMACIÓN FINAL</span>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="relative w-full h-full">
-                    <img
-                      src={item.url}
-                      alt={item.label}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                    <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-[#07070f]/80 backdrop-blur-sm border border-white/10 rounded-full px-2.5 py-1 text-[10px] font-mono-punk text-muted-foreground">
-                      <svg className="h-2.5 w-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                      <span>ETAPA {itemIdx + 1}</span>
-                    </div>
-                  </div>
-                )}
+        <Carousel opts={{ loop: true }}>
+          <div className="relative overflow-hidden rounded-xl border border-white/10 bg-[#0c0c18]">
+            <CarouselContent className="-ml-0">
+              {set.items.map((item, itemIdx) => (
+                <CarouselItem key={itemIdx} className="pl-0">
+                  <div className="relative w-full aspect-[4/3] sm:aspect-video flex items-center justify-center bg-[#07070f]">
+                    {item.type === 'video' ? (
+                      <div className="relative w-full h-full">
+                        <video
+                          src={item.url}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-[#07070f]/80 backdrop-blur-sm border border-[#ff1b6b]/30 rounded-full px-2.5 py-1 text-[10px] font-mono-punk text-[#ff1b6b]">
+                          <Film size={10} className="animate-spin" />
+                          <span>ANIMACIÓN FINAL</span>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="relative w-full h-full">
+                        <img
+                          src={item.url}
+                          alt={item.label}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                        <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-[#07070f]/80 backdrop-blur-sm border border-white/10 rounded-full px-2.5 py-1 text-[10px] font-mono-punk text-muted-foreground">
+                          <svg className="h-2.5 w-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                          <span>ETAPA {itemIdx + 1}</span>
+                        </div>
+                      </div>
+                    )}
 
-                {/* Subtitle / Phase Name */}
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#07070f] to-transparent p-4 pt-8">
-                  <div className="font-mono-punk text-[10px] uppercase tracking-[0.2em] text-[#00e5ff]">
-                    {item.label}
+                    {/* Subtitle / Phase Name */}
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#07070f] to-transparent p-4 pt-8">
+                      <div className="font-mono-punk text-[10px] uppercase tracking-[0.2em] text-[#00e5ff]">
+                        {item.label}
+                      </div>
+                    </div>
                   </div>
-                </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+
+            {/* Controls bar */}
+            <div className="border-t border-white/10 bg-[#0c0c18] px-4 py-3 flex items-center justify-between">
+              <div className="font-mono-punk text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
+                {`// ${set.items.length} etapas de desarrollo`}
               </div>
-            ))}
-          </BlossomCarousel>
-
-          {/* Controls bar */}
-          <div className="border-t border-white/10 bg-[#0c0c18] px-4 py-3 flex items-center justify-between">
-            <div className="font-mono-punk text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
-              {`// ${set.items.length} etapas de desarrollo`}
-            </div>
-            <div className="flex items-center gap-2">
-              <BlossomPrev
-                for={set.id}
-                className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 text-foreground transition hover:border-[#00e5ff]/60 hover:text-[#00e5ff]"
-              >
-                <ArrowRight size={14} className="rotate-180" />
-              </BlossomPrev>
-              <BlossomNext
-                for={set.id}
-                className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 text-foreground transition hover:border-[#00e5ff]/60 hover:text-[#00e5ff]"
-              >
-                <ArrowRight size={14} />
-              </BlossomNext>
+              <ProcessNavButtons />
             </div>
           </div>
-        </div>
+        </Carousel>
       </div>
     </div>
   )

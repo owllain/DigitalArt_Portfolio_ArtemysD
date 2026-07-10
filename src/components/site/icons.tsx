@@ -1,6 +1,6 @@
 'use client'
 
-import { BlossomCarousel, BlossomPrev, BlossomNext } from '@blossom-carousel/react'
+import { Carousel, CarouselContent, CarouselItem, useCarousel } from '@/components/ui/carousel'
 import { ArrowRight, Sparkles, Layers } from 'reicon-react'
 import { SectionLabel } from './section-label'
 import { PunkBadge } from './punk-badge'
@@ -54,55 +54,68 @@ export function Icons() {
   )
 }
 
+function StickerNavButtons() {
+  const { scrollPrev, scrollNext } = useCarousel()
+  return (
+    <>
+      <button
+        type="button"
+        onClick={scrollPrev}
+        aria-label="Anterior"
+        className="pointer-events-auto flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-[#07070f]/60 text-foreground transition hover:border-[#ffd60a]/60 hover:text-[#ffd60a] opacity-0 group-hover:opacity-100"
+      >
+        <ArrowRight size={14} className="rotate-180" />
+      </button>
+      <button
+        type="button"
+        onClick={scrollNext}
+        aria-label="Siguiente"
+        className="pointer-events-auto flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-[#07070f]/60 text-foreground transition hover:border-[#ffd60a]/60 hover:text-[#ffd60a] opacity-0 group-hover:opacity-100"
+      >
+        <ArrowRight size={14} />
+      </button>
+    </>
+  )
+}
+
 function StickerSetCard({ set }: { set: ArtworkSet }) {
   return (
     <div className="group flex flex-col rounded-xl border border-white/10 bg-[#0c0c18] overflow-hidden">
-      {/* Blossom Carousel for Sticker Sheets/Items */}
+      {/* Embla Carousel for Sticker Sheets/Items */}
       <div className="relative aspect-square sm:aspect-video bg-[#07070f] overflow-hidden">
-        <BlossomCarousel id={set.id} className="sticker-set-carousel" repeat>
-          {set.items.map((item, itemIdx) => (
-            <div
-              key={itemIdx}
-              data-blossom-slide
-              className="blossom-slide relative w-full h-full shrink-0 flex items-center justify-center p-6 bg-[#07070f] scanlines"
-            >
-              <img
-                src={item.url}
-                alt={item.label}
-                className="w-full h-full object-contain max-h-[85%] transition-transform duration-[600ms] group-hover:scale-105"
-                loading="lazy"
-              />
+        <Carousel opts={{ loop: true }}>
+          <CarouselContent className="-ml-0 h-full">
+            {set.items.map((item, itemIdx) => (
+              <CarouselItem key={itemIdx} className="pl-0">
+                <div className="relative w-full h-full flex items-center justify-center p-6 bg-[#07070f] scanlines">
+                  <img
+                    src={item.url}
+                    alt={item.label}
+                    className="w-full h-full object-contain max-h-[85%] transition-transform duration-[600ms] group-hover:scale-105"
+                    loading="lazy"
+                  />
 
-              {/* Slide Counter Overlay */}
-              <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-[#07070f]/80 backdrop-blur-sm border border-white/10 rounded-full px-2.5 py-1 text-[9px] font-mono-punk text-muted-foreground">
-                <span>ITEM {itemIdx + 1} / {set.items.length}</span>
-              </div>
+                  {/* Slide Counter Overlay */}
+                  <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-[#07070f]/80 backdrop-blur-sm border border-white/10 rounded-full px-2.5 py-1 text-[9px] font-mono-punk text-muted-foreground">
+                    <span>ITEM {itemIdx + 1} / {set.items.length}</span>
+                  </div>
 
-              {/* Item Label */}
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#07070f]/90 via-[#07070f]/20 to-transparent p-4 pt-8 text-center">
-                <span className="font-mono-punk text-[9px] uppercase tracking-[0.2em] text-[#ffd60a]">
-                  {item.label}
-                </span>
-              </div>
-            </div>
-          ))}
-        </BlossomCarousel>
+                  {/* Item Label */}
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#07070f]/90 via-[#07070f]/20 to-transparent p-4 pt-8 text-center">
+                    <span className="font-mono-punk text-[9px] uppercase tracking-[0.2em] text-[#ffd60a]">
+                      {item.label}
+                    </span>
+                  </div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
 
-        {/* Blossom navigation arrows */}
-        <div className="absolute inset-y-0 left-0 right-0 pointer-events-none flex items-center justify-between px-3">
-          <BlossomPrev
-            for={set.id}
-            className="pointer-events-auto flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-[#07070f]/60 text-foreground transition hover:border-[#ffd60a]/60 hover:text-[#ffd60a] opacity-0 group-hover:opacity-100"
-          >
-            <ArrowRight size={14} className="rotate-180" />
-          </BlossomPrev>
-          <BlossomNext
-            for={set.id}
-            className="pointer-events-auto flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-[#07070f]/60 text-foreground transition hover:border-[#ffd60a]/60 hover:text-[#ffd60a] opacity-0 group-hover:opacity-100"
-          >
-            <ArrowRight size={14} />
-          </BlossomNext>
-        </div>
+          {/* navigation arrows */}
+          <div className="absolute inset-y-0 left-0 right-0 pointer-events-none flex items-center justify-between px-3">
+            <StickerNavButtons />
+          </div>
+        </Carousel>
       </div>
 
       {/* Info card text */}

@@ -1,6 +1,6 @@
 'use client'
 
-import { BlossomCarousel, BlossomPrev, BlossomNext } from '@blossom-carousel/react'
+import { Carousel, CarouselContent, CarouselItem, useCarousel } from '@/components/ui/carousel'
 import { ArrowRight, Layers, Sparkles } from 'reicon-react'
 import { SectionLabel } from './section-label'
 import { PunkBadge } from './punk-badge'
@@ -36,7 +36,7 @@ export function Backgrounds() {
           </div>
         </div>
 
-        {/* Galería de fondos por sets con Blossom */}
+        {/* Galería de fondos por sets con Embla */}
         <div className="mt-16 grid grid-cols-1 gap-12">
           {BACKGROUND_SETS.map((set, idx) => (
             <BackgroundSetCard key={set.id} set={set} isLarge={idx === 0} />
@@ -44,6 +44,30 @@ export function Backgrounds() {
         </div>
       </div>
     </section>
+  )
+}
+
+function BackgroundNavButtons() {
+  const { scrollPrev, scrollNext } = useCarousel()
+  return (
+    <>
+      <button
+        type="button"
+        onClick={scrollPrev}
+        aria-label="Anterior"
+        className="pointer-events-auto flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-[#07070f]/60 text-foreground transition hover:border-[#9d4edd]/60 hover:text-[#9d4edd] opacity-0 group-hover:opacity-100"
+      >
+        <ArrowRight size={14} className="rotate-180" />
+      </button>
+      <button
+        type="button"
+        onClick={scrollNext}
+        aria-label="Siguiente"
+        className="pointer-events-auto flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-[#07070f]/60 text-foreground transition hover:border-[#9d4edd]/60 hover:text-[#9d4edd] opacity-0 group-hover:opacity-100"
+      >
+        <ArrowRight size={14} />
+      </button>
+    </>
   )
 }
 
@@ -56,46 +80,33 @@ function BackgroundSetCard({ set, isLarge }: { set: ArtworkSet; isLarge?: boolea
       <div className={`lg:col-span-7 relative order-1 ${isLarge ? 'lg:order-2' : ''}`}>
         <div className="relative overflow-hidden rounded-xl border border-white/10 bg-[#07070f]">
           {set.items.length > 1 ? (
-            <>
-              <BlossomCarousel id={set.id} className="background-set-carousel" repeat>
+            <Carousel opts={{ loop: true }}>
+              <CarouselContent className="-ml-0">
                 {set.items.map((item, itemIdx) => (
-                  <div
-                    key={itemIdx}
-                    data-blossom-slide
-                    className="blossom-slide relative w-full shrink-0 aspect-[21/9] sm:aspect-[21/9] flex items-center justify-center"
-                  >
-                    <img
-                      src={item.url}
-                      alt={item.label}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
+                  <CarouselItem key={itemIdx} className="pl-0">
+                    <div className="relative w-full aspect-[21/9] sm:aspect-[21/9] flex items-center justify-center">
+                      <img
+                        src={item.url}
+                        alt={item.label}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
 
-                    {/* Stage Label */}
-                    <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-[#07070f]/80 backdrop-blur-sm border border-white/10 rounded-full px-2.5 py-1 text-[9px] font-mono-punk text-muted-foreground">
-                      <Layers size={10} />
-                      <span>{item.label}</span>
+                      {/* Stage Label */}
+                      <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-[#07070f]/80 backdrop-blur-sm border border-white/10 rounded-full px-2.5 py-1 text-[9px] font-mono-punk text-muted-foreground">
+                        <Layers size={10} />
+                        <span>{item.label}</span>
+                      </div>
                     </div>
-                  </div>
+                  </CarouselItem>
                 ))}
-              </BlossomCarousel>
+              </CarouselContent>
 
               {/* Overlays controls */}
               <div className="absolute inset-y-0 left-0 right-0 pointer-events-none flex items-center justify-between px-3">
-                <BlossomPrev
-                  for={set.id}
-                  className="pointer-events-auto flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-[#07070f]/60 text-foreground transition hover:border-[#9d4edd]/60 hover:text-[#9d4edd] opacity-0 group-hover:opacity-100"
-                >
-                  <ArrowRight size={14} className="rotate-180" />
-                </BlossomPrev>
-                <BlossomNext
-                  for={set.id}
-                  className="pointer-events-auto flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-[#07070f]/60 text-foreground transition hover:border-[#9d4edd]/60 hover:text-[#9d4edd] opacity-0 group-hover:opacity-100"
-                >
-                  <ArrowRight size={14} />
-                </BlossomNext>
+                <BackgroundNavButtons />
               </div>
-            </>
+            </Carousel>
           ) : (
             <div className="relative aspect-[21/9] sm:aspect-[21/9]">
               <img
