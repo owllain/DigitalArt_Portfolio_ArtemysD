@@ -1,8 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
-  /* config options here */
+  // "standalone" era para el servidor Caddy — Vercel no lo necesita
   typescript: {
     ignoreBuildErrors: true,
   },

@@ -3,17 +3,15 @@
 import { SectionLabel } from './section-label'
 import { PunkBadge } from './punk-badge'
 import { useScrollReveal } from './use-scroll-reveal'
-import { useStats } from './use-works'
+import { computeStats } from '@/lib/data'
+import { Sparkles, Briefcase, Eye } from 'reicon-react'
 
 const BIO_FACTS = [
   { k: 'Nombre', v: 'Diana Hernández' },
   { k: 'Alias', v: 'ArthemysD / @ARTHEMYS_D' },
   { k: 'Edad', v: '23 años' },
   { k: 'Formación', v: 'Lic. Diseño y Comunicación Visual' },
-  { k: 'Freelance', v: '5 años' },
-  { k: 'Koeda Animation', v: 'desde 2025 (Douga + Shiage)' },
-  { k: 'CIC San Juan del Río', v: '4 años de diseño' },
-  { k: 'Ventas', v: '2 años de experiencia' },
+  { k: 'Freelance', v: '5 años' }
 ]
 
 const SKILLS = [
@@ -26,12 +24,39 @@ const SKILLS = [
   'Diseño de personajes',
   'Iconos & stickers',
   'Post-producción',
-  'Keyframes',
+  'Keyframes'
+]
+
+const WORK_EXPERIENCE = [
+  {
+    role: 'Douga (In-Between) & Shiage (Color)',
+    company: 'Koeda Animation',
+    period: '2025 - Presente',
+    desc: 'Limpieza de fotogramas, definición de timing dinámico y coloreado final para series de animación comercial japonesa.'
+  },
+  {
+    role: 'Diseñadora de Comunicación Visual',
+    company: 'Colegio de Ingenieros Civiles (CIC) San Juan del Río',
+    period: '4 años',
+    desc: 'Desarrollo de identidad corporativa, material de difusión oficial, infografías y piezas visuales promocionales.'
+  },
+  {
+    role: 'Especialista en Ventas y Atención al Cliente',
+    company: 'Ventas y Atención Freelance',
+    period: '2 años',
+    desc: 'Gestión directa de comisiones, negociación de presupuestos, comunicación de procesos artísticos y plazos de entrega.'
+  },
+  {
+    role: 'Artista Conceptual e Ilustradora Freelance',
+    company: 'Independiente (@ARTHEMYS_D)',
+    period: '5 años',
+    desc: 'Creación de sets de stickers vectoriales, retratos de mascotas personalizados con animación y rigging en After Effects.'
+  }
 ]
 
 export function About() {
   const { ref } = useScrollReveal()
-  const stats = useStats()
+  const stats = computeStats() // Importación directa súper rápida y libre de bugs de red
 
   return (
     <section
@@ -74,15 +99,14 @@ export function About() {
         <SectionLabel index="01" title="Sobre mí" accent="cyan" />
 
         <div className="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-10">
-          {/* Left: portrait + quote */}
+          {/* Left: portrait + quote + inspiration */}
           <div className="lg:col-span-5">
             <div className="relative">
               <div className="absolute -inset-3 halftone-pink opacity-30 rounded-2xl" />
               <div className="relative overflow-hidden rounded-xl border border-white/10">
-                { }
                 <img
-                  src="/gallery/cat-cosmic-1.png"
-                  alt="Obra representativa de ArthemysD"
+                  src="/gallery/Portrait_Aboutme.png"
+                  alt="Diana Hernández - ARTHEMYS_D"
                   className="aspect-[4/5] w-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#07070f] via-transparent to-transparent" />
@@ -97,90 +121,106 @@ export function About() {
               </div>
             </div>
 
-            {/* Jinx inspiration card */}
+            {/* Inspiration card */}
             <div className="mt-6 rounded-xl border border-[#9d4edd]/30 bg-[#9d4edd]/5 p-5">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="h-2 w-2 rounded-full bg-[#9d4edd] animate-blink" />
+              <div className="flex items-center gap-2 mb-3">
+                <Eye size={14} className="text-[#9d4edd]" />
                 <span className="font-mono-punk text-[10px] uppercase tracking-[0.25em] text-[#9d4edd]">
-                  Inspiración · paleta punk
+                  Identidad Artística & Inspiración
                 </span>
               </div>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                La artista se inspira profundamente en{' '}
-                <span className="text-[#00e5ff]">Jinx</span> de League of Legends.
-                Sin usar assets del personaje, imita su paleta con precisión
-                quirúrgica — azul eléctrico, magenta neón, amarillo cáustico — y
-                su estética punk: vectores cortantes, halftone y spray.
+                Como artista, me inspiro mucho en los maestros clásicos como <span className="text-[#00e5ff] font-medium">Van Gogh</span> por su textura emocional y <span className="text-[#00e5ff] font-medium">Picasso</span> por la deconstrucción formal, fusionándolos con estilos de arte postmoderno, fantasía y ciencia ficción (Sci-Fi). Mi trabajo explora la interacción de la línea definida, el contraste del sombreado plano y una iluminación cósmica.
               </p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Planifico mis obras desde el boceto inicial analizando las siluetas, pensando en el rigging digital y el acomodo de capas para darles dinamismo y vida en post-producción.
+              </p>
+
               {/* palette swatches */}
-              <div className="mt-4 flex gap-2">
-                {[
-                  { c: '#ff1b6b', n: 'Magenta' },
-                  { c: '#00e5ff', n: 'Cian' },
-                  { c: '#9d4edd', n: 'Púrpura' },
-                  { c: '#ffd60a', n: 'Amarillo' },
-                  { c: '#07070f', n: 'Tinta' },
-                ].map((s) => (
-                  <div key={s.c} className="flex-1">
-                    <div
-                      className="h-10 w-full rounded border border-white/15"
-                      style={{ backgroundColor: s.c }}
-                    />
-                    <div className="mt-1 font-mono-punk text-[9px] uppercase tracking-wider text-muted-foreground text-center">
-                      {s.n}
+              <div className="mt-4 border-t border-white/5 pt-4">
+                <div className="font-mono-punk text-[9px] uppercase tracking-wider text-muted-foreground mb-2">
+                  // mi paleta favorita
+                </div>
+                <div className="flex gap-2">
+                  {[
+                    { c: '#ff1b6b', n: 'Magenta' },
+                    { c: '#00e5ff', n: 'Cian' },
+                    { c: '#9d4edd', n: 'Púrpura' },
+                    { c: '#ffd60a', n: 'Amarillo' },
+                    { c: '#07070f', n: 'Tinta' }
+                  ].map((s) => (
+                    <div key={s.c} className="flex-1">
+                      <div
+                        className="h-10 w-full rounded border border-white/15 transition-transform hover:scale-110"
+                        style={{ backgroundColor: s.c }}
+                        title={s.n}
+                      />
+                      <div className="mt-1 font-mono-punk text-[8px] uppercase tracking-wider text-muted-foreground text-center">
+                        {s.n}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Right: bio */}
+          {/* Right: bio + experience + skills */}
           <div className="lg:col-span-7">
             <h2 className="font-display text-4xl sm:text-5xl leading-[1.05] tracking-tight">
-              Una ilustradora que{' '}
-              <span className="neon-pink">darle vida</span> a todo lo que toca.
+              Una ilustradora que le da{' '}
+              <span className="neon-pink">vida y carácter</span> a cada trazo.
             </h2>
 
             <div className="mt-6 space-y-4 text-base leading-relaxed text-muted-foreground">
               <p>
-                Soy <span className="text-foreground">Diana Hernández</span>, aka{' '}
-                <span className="text-[#ff1b6b]">ARTHEMYS_D</span>. Licenciada en
-                Diseño y Comunicación Visual, llevo 5 años trabajando como
-                freelance y desde 2025 formo parte del equipo de{' '}
-                <span className="text-foreground">Koeda Animation</span> en las
-                áreas de <span className="text-[#00e5ff]">Douga (In-Between)</span>{' '}
-                y <span className="text-[#00e5ff]">Shiage (Color)</span>.
+                Soy <span className="text-foreground font-medium">Diana Hernández</span>, artista digital conocida en internet como <span className="text-[#ff1b6b] font-medium">ARTHEMYS_D</span>. Licenciada en Diseño y Comunicación Visual, me he especializado en la intersección de la animación tradicional japonesa y las herramientas modernas de animación digital por capas.
               </p>
               <p>
-                Mi manejo de After Effects — principalmente con la herramienta{' '}
-                <span className="text-foreground">Puppet</span> — me permite dar
-                vida a mis ilustraciones. Desde el comienzo planifico cada pieza
-                para el correcto acomodo de capas y hacer la magia en
-                post-producción.
-              </p>
-              <p>
-                Una de mis partes favoritas son los{' '}
-                <span className="text-foreground">retratos de mascotas</span>:
-                tomo una foto existente y la reinvento para que exprese la
-                personalidad del animal. También diseño para el Colegio de
-                Ingenieros Civiles de San Juan del Río desde hace 4 años.
+                Mi flujo de trabajo se centra en el dinamismo y la expresividad del movimiento. En cada ilustración de fondos o retratos de mascotas, acomodo y planifico los elementos por capas independientes desde el inicio. Esto me permite utilizar técnicas de rigging con After Effects (especialmente la herramienta Puppet) para darles movimiento y un acabado mágico de post-producción.
               </p>
             </div>
 
-            {/* facts grid */}
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {/* bio facts grid */}
+            <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3">
               {BIO_FACTS.map((f) => (
                 <div
                   key={f.k}
                   className="rounded-lg border border-white/10 bg-card/50 p-3"
                 >
-                  <div className="font-mono-punk text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                  <div className="font-mono-punk text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
                     {f.k}
                   </div>
                   <div className="mt-1 text-sm text-foreground">{f.v}</div>
                 </div>
               ))}
+            </div>
+
+            {/* Experience Box (Bullets) */}
+            <div className="mt-8 rounded-xl border border-white/10 bg-card/30 p-5 sm:p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <Briefcase size={16} className="text-[#00e5ff]" />
+                <h3 className="font-mono-punk text-xs uppercase tracking-[0.2em] text-foreground">
+                  Experiencia Profesional
+                </h3>
+              </div>
+              <ul className="space-y-4">
+                {WORK_EXPERIENCE.map((exp, idx) => (
+                  <li key={idx} className="flex gap-3 text-sm">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#00e5ff]" />
+                    <div className="space-y-1">
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+                        <span className="font-medium text-foreground">{exp.role}</span>
+                        <span className="text-xs text-muted-foreground">— {exp.company}</span>
+                        <span className="font-mono-punk text-[9px] text-[#ff1b6b] ml-auto">{exp.period}</span>
+                      </div>
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        {exp.desc}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </div>
 
             {/* skills */}
@@ -204,40 +244,38 @@ export function About() {
               </div>
             </div>
 
-            {/* live counts */}
-            {stats && (
-              <div className="mt-8 grid grid-cols-3 gap-3">
-                {[
-                  { n: stats.stats.worksCount ?? '0', l: 'Obras en portafolio' },
-                  {
-                    n: String(
-                      (stats.categoryCounts.animation ?? 0) +
-                        (stats.categoryCounts.background ?? 0)
-                    ),
-                    l: 'Piezas de animación',
-                  },
-                  {
-                    n: String(
-                      (stats.categoryCounts.illustration ?? 0) +
-                        (stats.categoryCounts.pet ?? 0)
-                    ),
-                    l: 'Ilustraciones + mascotas',
-                  },
-                ].map((s) => (
-                  <div
-                    key={s.l}
-                    className="rounded-lg border border-[#ff1b6b]/20 bg-[#ff1b6b]/5 p-4 text-center"
-                  >
-                    <div className="font-display text-3xl text-[#ff1b6b]">
-                      {s.n}
-                    </div>
-                    <div className="mt-1 font-mono-punk text-[9px] uppercase tracking-[0.18em] text-muted-foreground">
-                      {s.l}
-                    </div>
+            {/* live counts (direct stats from data.ts) */}
+            <div className="mt-8 grid grid-cols-3 gap-3">
+              {[
+                { n: stats.stats.worksCount ?? '18', l: 'Obras en portafolio' },
+                {
+                  n: String(
+                    (stats.categoryCounts.animation ?? 0) +
+                      (stats.categoryCounts.background ?? 0)
+                  ),
+                  l: 'Piezas de animación',
+                },
+                {
+                  n: String(
+                    (stats.categoryCounts.illustration ?? 2) +
+                      (stats.categoryCounts.pet ?? 0)
+                  ),
+                  l: 'Ilustraciones + mascotas',
+                },
+              ].map((s) => (
+                <div
+                  key={s.l}
+                  className="rounded-lg border border-[#ff1b6b]/20 bg-[#ff1b6b]/5 p-4 text-center hover:border-[#ff1b6b]/50 transition-colors"
+                >
+                  <div className="font-display text-3xl text-[#ff1b6b]">
+                    {s.n}
                   </div>
-                ))}
-              </div>
-            )}
+                  <div className="mt-1 font-mono-punk text-[9px] uppercase tracking-[0.18em] text-muted-foreground">
+                    {s.l}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

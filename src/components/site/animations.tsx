@@ -1,23 +1,28 @@
 'use client'
 
 import { BlossomCarousel, BlossomPrev, BlossomNext } from '@blossom-carousel/react'
-import { ArrowRight, Film, Palette, Sparkles } from 'reicon-react'
+import { ArrowRight, Film, Palette, Sparkles, Star } from 'reicon-react'
 import { SectionLabel } from './section-label'
 import { PunkBadge } from './punk-badge'
 import { useScrollReveal } from './use-scroll-reveal'
-import { byCategory, useWorks } from './use-works'
-import type { Artwork } from '@/lib/types'
+import { ANIMATION_SETS, ArtworkSet } from '@/lib/data'
+
+const PUBLISHED_CREDITS = [
+  { title: 'Fate Strange Fake — Capítulo 02', role: 'Shiage (Color)', detail: 'A-1 Pictures / Koeda Animation' },
+  { title: 'Kimi to Boku — Capítulo 03', role: 'Shiage (Color)', detail: 'J.C.Staff / Koeda Animation' },
+  { title: 'Video musical "Reloj de Arena" por Aki Chan', role: 'Shiage (Color)', detail: 'Animación MV' },
+  { title: 'Trailer del videojuego "Alice at the End of Her Life"', role: 'Shiage (Color)', detail: 'Promo Trailer' },
+  { title: 'The Casebook of Arne', role: 'Douga (In-Between)', detail: 'Producción de Animación' }
+]
 
 export function Animations() {
   const { ref } = useScrollReveal()
-  const { works, loading } = useWorks()
-  const anims = byCategory(works, 'animation')
 
   return (
     <section
       id="animaciones"
       ref={ref}
-      className="reveal relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5"
+      className="reveal relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5 bg-[#07070f]"
     >
       {/* glow backdrop */}
       <div className="pointer-events-none absolute left-1/2 top-40 -z-10 h-96 w-96 -translate-x-1/2 rounded-full bg-[#ff1b6b]/10 blur-[120px]" />
@@ -26,218 +31,218 @@ export function Animations() {
         <SectionLabel index="03" title="Animaciones" accent="pink" />
 
         <div className="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-10">
-          {/* Left: intro + credits list */}
-          <div className="lg:col-span-5">
-            <h2 className="font-display text-4xl sm:text-5xl leading-[1.05] tracking-tight">
-              Animación 2D{' '}
-              <span className="neon-pink">frame x frame</span>.
-            </h2>
-            <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-              Cuento con experiencia en animación japonesa de la mano de{' '}
-              <span className="text-foreground">Koeda Animation</span>, en las
-              áreas de <span className="text-[#00e5ff]">Douga (In-Between)</span>{' '}
-              y <span className="text-[#00e5ff]">Shiage (Color)</span>. Sin
-              contar correcciones, soy de los últimos pasos antes de
-              post-producción y emisión.
-            </p>
-
-            {/* credits list */}
-            <div className="mt-7 space-y-2">
-              <div className="font-mono-punk text-[10px] uppercase tracking-[0.25em] text-muted-foreground mb-2">
-                {'// créditos publicados'}
-              </div>
-              {anims.map((a) => (
-                <CreditRow key={a.id} work={a} />
-              ))}
+          {/* Left: Intro & Credits */}
+          <div className="lg:col-span-5 space-y-6">
+            <div>
+              <h2 className="font-display text-4xl sm:text-5xl leading-[1.05] tracking-tight">
+                Animación 2D <span className="neon-pink">frame x frame</span>.
+              </h2>
+              <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                Tengo experiencia en producción de anime comercial de la mano de{' '}
+                <span className="text-foreground font-medium">Koeda Animation</span>, en los departamentos de{' '}
+                <span className="text-[#00e5ff] font-medium">Douga (In-Between)</span> y{' '}
+                <span className="text-[#00e5ff] font-medium">Shiage (Color)</span>. Mi rol consiste en asegurar la solidez y fluidez del trazo y la aplicación del color antes de que pase a post-producción y emisión.
+              </p>
             </div>
 
-            <div className="mt-6 rounded-lg border border-[#ffd60a]/25 bg-[#ffd60a]/5 p-4">
-              <div className="flex items-center gap-2 mb-1">
-                <Sparkles size={14} className="text-[#ffd60a]" />
-                <span className="font-mono-punk text-[10px] uppercase tracking-[0.2em] text-[#ffd60a]">
-                  También
+            {/* Créditos oficiales en tarjetas minimalistas */}
+            <div className="space-y-3">
+              <div className="font-mono-punk text-[9px] uppercase tracking-[0.25em] text-muted-foreground">
+                {'// créditos oficiales publicados'}
+              </div>
+              <div className="space-y-2">
+                {PUBLISHED_CREDITS.map((credit, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-center gap-3 rounded-lg border border-white/5 bg-card/25 p-3 hover:border-[#ff1b6b]/40 hover:bg-card/50 transition-colors text-sm"
+                  >
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-[#ff1b6b]/10 text-[#ff1b6b]">
+                      {credit.role.includes('Color') ? <Palette size={14} /> : <Film size={14} />}
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="text-foreground font-medium truncate text-xs">{credit.title}</div>
+                      <div className="text-[10px] text-muted-foreground truncate">{credit.detail}</div>
+                    </div>
+                    <span className="font-mono-punk text-[9px] text-[#ff1b6b] border border-[#ff1b6b]/20 rounded px-1.5 py-0.5 shrink-0">
+                      {credit.role.includes('Color') ? 'COLOR' : 'DOUGA'}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Nota NSFW */}
+            <div className="rounded-lg border border-[#ffd60a]/25 bg-[#ffd60a]/5 p-4 text-xs leading-relaxed text-muted-foreground">
+              <div className="flex items-center gap-2 mb-1.5">
+                <Sparkles size={12} className="text-[#ffd60a]" />
+                <span className="font-mono-punk text-[9px] uppercase tracking-[0.2em] text-[#ffd60a] font-bold">
+                  EXPERIENCIA ADICIONAL
                 </span>
               </div>
-              <p className="text-[13px] leading-relaxed text-muted-foreground">
-                Experiencia en animaciones NSFW en los apartados de Douga y
-                Color, y trabajo independiente para clientes (intro de
-                Juanburgueso, animación mixta Frame x Frame + After Effects).
-              </p>
+              Cuento también con experiencia en producciones de animación <span className="text-foreground font-medium">NSFW</span> en el apartado técnico de Douga (In-Between) y Shiage (Color), manteniendo altos estándares de limpieza en los fotogramas bajo requerimientos específicos.
             </div>
           </div>
 
-          {/* Right: carousel */}
-          <div className="lg:col-span-7">
-            {loading ? (
-              <div className="aspect-video rounded-xl halftone-pink animate-pulse" />
-            ) : (
-              <>
-                <BlossomCarousel
-                  id="anim-carousel"
-                  className="anim-carousel"
-                  repeat
-                >
-                  {anims.map((a) => (
-                    <AnimSlide key={a.id} work={a} />
-                  ))}
-                </BlossomCarousel>
+          {/* Right: Animaciones en carruseles independientes */}
+          <div className="lg:col-span-7 space-y-10">
+            <div className="font-mono-punk text-[10px] uppercase tracking-[0.25em] text-muted-foreground mb-4">
+              {'// portafolio interactivo (boceto vs movimiento)'}
+            </div>
 
-                <div className="mt-5 flex items-center justify-between">
-                  <div className="font-mono-punk text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-                    {`// ${anims.length} producciones`}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <BlossomPrev
-                      for="anim-carousel"
-                      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 text-foreground transition hover:border-[#ff1b6b]/60 hover:text-[#ff1b6b]"
-                    >
-                      <ArrowRight size={16} className="rotate-180" />
-                    </BlossomPrev>
-                    <BlossomNext
-                      for="anim-carousel"
-                      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 text-foreground transition hover:border-[#ff1b6b]/60 hover:text-[#ff1b6b]"
-                    >
-                      <ArrowRight size={16} />
-                    </BlossomNext>
-                  </div>
-                </div>
-              </>
-            )}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {ANIMATION_SETS.map((set) => (
+                <AnimationSetCard key={set.id} set={set} />
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Juanburgueso feature */}
-        <JuanburguesoFeature works={works} />
+        {/* Juanburgueso Feature */}
+        <JuanburguesoFeature />
       </div>
     </section>
   )
 }
 
-function CreditRow({ work }: { work: Artwork }) {
-  const roleAccent =
-    work.role?.toLowerCase().includes('color')
-      ? 'pink'
-      : work.role?.toLowerCase().includes('douga')
-      ? 'cyan'
-      : 'yellow'
+function AnimationSetCard({ set }: { set: ArtworkSet }) {
   return (
-    <div className="group flex items-center gap-3 rounded-lg border border-white/8 bg-card/40 p-3 transition hover:border-[#ff1b6b]/40 hover:bg-card">
-      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-[#ff1b6b]/10">
-        {roleAccent === 'pink' ? (
-          <Palette size={16} className="text-[#ff1b6b]" />
-        ) : (
-          <Film size={16} className="text-[#00e5ff]" />
-        )}
-      </div>
-      <div className="min-w-0 flex-1">
-        <div className="text-sm text-foreground truncate">{work.title}</div>
-        <div className="font-mono-punk text-[10px] uppercase tracking-wider text-muted-foreground">
-          {work.client} · {work.year}
-        </div>
-      </div>
-      <PunkBadge variant={roleAccent as 'pink' | 'cyan' | 'yellow'}>
-        {work.role}
-      </PunkBadge>
-    </div>
-  )
-}
+    <div className="group flex flex-col rounded-xl border border-white/10 bg-[#0c0c18] overflow-hidden">
+      {/* Blossom Carousel */}
+      <div className="relative aspect-square sm:aspect-video bg-[#07070f] overflow-hidden">
+        <BlossomCarousel id={set.id} className="animation-set-carousel" repeat>
+          {set.items.map((item, itemIdx) => (
+            <div
+              key={itemIdx}
+              data-blossom-slide
+              className="blossom-slide relative w-full h-full shrink-0 flex items-center justify-center"
+            >
+              {item.type === 'video' ? (
+                <video
+                  src={item.url}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <img
+                  src={item.url}
+                  alt={item.label}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              )}
 
-function AnimSlide({ work }: { work: Artwork }) {
-  return (
-    <div
-      data-blossom-slide
-      className="blossom-slide relative mr-4 w-[85vw] sm:w-[460px] shrink-0"
-    >
-      <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-card">
-        <div className="relative aspect-video overflow-hidden">
-          { }
-          <img
-            src={work.imageUrl}
-            alt={work.title}
-            className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#07070f] via-[#07070f]/40 to-transparent" />
-          <div className="absolute right-3 top-3">
-            <PunkBadge variant={work.featured ? 'pink' : 'ghost'}>
-              {work.role}
-            </PunkBadge>
-          </div>
-          <div className="absolute inset-x-0 bottom-0 p-5">
-            <h3 className="font-display text-xl text-foreground leading-tight">
-              {work.title}
-            </h3>
-            <p className="mt-1 font-mono-punk text-[10px] uppercase tracking-wider text-muted-foreground">
-              {work.client} · {work.year}
-            </p>
-          </div>
+              {/* Tag indicator */}
+              <div className="absolute top-3 left-3 bg-[#07070f]/80 backdrop-blur-sm border border-white/10 rounded-full px-2 py-0.5 text-[9px] font-mono-punk text-muted-foreground">
+                {item.label}
+              </div>
+            </div>
+          ))}
+        </BlossomCarousel>
+
+        {/* Blossom Prev/Next overlays */}
+        <div className="absolute inset-y-0 left-0 right-0 pointer-events-none flex items-center justify-between px-2">
+          <BlossomPrev
+            for={set.id}
+            className="pointer-events-auto flex h-7 w-7 items-center justify-center rounded-full border border-white/10 bg-[#07070f]/60 text-foreground transition hover:border-[#ff1b6b]/60 hover:text-[#ff1b6b] opacity-0 group-hover:opacity-100"
+          >
+            <ArrowRight size={12} className="rotate-180" />
+          </BlossomPrev>
+          <BlossomNext
+            for={set.id}
+            className="pointer-events-auto flex h-7 w-7 items-center justify-center rounded-full border border-white/10 bg-[#07070f]/60 text-foreground transition hover:border-[#ff1b6b]/60 hover:text-[#ff1b6b] opacity-0 group-hover:opacity-100"
+          >
+            <ArrowRight size={12} />
+          </BlossomNext>
         </div>
-        <div className="p-4">
-          <p className="text-[13px] leading-relaxed text-muted-foreground">
-            {work.description}
+      </div>
+
+      {/* Info card footer */}
+      <div className="p-4 flex-1 flex flex-col justify-between">
+        <div>
+          <div className="flex items-center justify-between">
+            <h3 className="font-display text-base text-foreground leading-tight">{set.title}</h3>
+            <span className="font-mono-punk text-[9px] text-muted-foreground shrink-0">{set.year}</span>
+          </div>
+          <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+            {set.description}
           </p>
         </div>
+
+        <div className="mt-3 pt-3 border-t border-white/5 flex flex-wrap gap-1">
+          {set.tags?.slice(0, 3).map((t) => (
+            <span key={t} className="font-mono-punk text-[8px] uppercase tracking-wider text-[#ff1b6b]">
+              #{t}
+            </span>
+          ))}
+          {set.role && (
+            <span className="font-mono-punk text-[8px] uppercase tracking-wider text-[#00e5ff] ml-auto">
+              {set.role}
+            </span>
+          )}
+        </div>
       </div>
     </div>
   )
 }
 
-function JuanburguesoFeature({ works }: { works: Artwork[] }) {
-  const juan = works.find(
-    (w) => w.category === 'animation' && w.title.toLowerCase().includes('juanburgueso')
-  )
-  if (!juan) return null
-
+function JuanburguesoFeature() {
   return (
     <div className="mt-16 overflow-hidden rounded-2xl border border-[#ff1b6b]/30 bg-gradient-to-br from-[#ff1b6b]/10 via-card to-[#9d4edd]/10">
       <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="relative aspect-[4/3] lg:aspect-auto overflow-hidden">
-          { }
-          <img
-            src={juan.imageUrl}
-            alt={juan.title}
+        <div className="relative aspect-[4/3] lg:aspect-auto overflow-hidden bg-[#07070f]">
+          <video
+            src="/gallery/Carrusel1_Final.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
             className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#07070f]/60" />
           <div className="absolute left-4 top-4">
-            <PunkBadge variant="pink">Caso destacado</PunkBadge>
+            <PunkBadge variant="pink">Caso de Estudio Destacado</PunkBadge>
           </div>
         </div>
+
         <div className="p-7 sm:p-10 flex flex-col justify-center">
           <div className="font-mono-punk text-[10px] uppercase tracking-[0.25em] text-[#ff1b6b] mb-3">
-            {'// mascota firma del director'}
+            {'// rediseño y animación de intro'}
           </div>
           <h3 className="font-display text-3xl sm:text-4xl leading-tight">
-            {juan.title}
+            Juanburgueso Mascot
           </h3>
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-            {juan.description}
+            Juanburgueso es la mascota firma de un director de cine independiente. Se trabajó exhaustivamente en el rediseño del personaje para optimizar su identidad digital, se crearon las guías de uso oficial y se animó la secuencia de introducción de forma mixta. El flujo de trabajo involucró animación tradicional Frame por Frame junto con After Effects Puppet para lograr un movimiento orgánico con alta densidad de keyframes.
           </p>
-          <div className="mt-6 grid grid-cols-2 gap-3">
+
+          <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3">
             {[
-              { k: 'Rol', v: juan.role ?? '—' },
-              { k: 'Cliente', v: juan.client ?? '—' },
-              { k: 'Año', v: juan.year ?? '—' },
-              { k: 'Método', v: 'Frame x Frame + AE' },
+              { k: 'Rol', v: 'Rediseño y Rigging' },
+              { k: 'Cliente', v: 'Director Cine' },
+              { k: 'Año', v: '2024' },
+              { k: 'Método', v: 'Frame x Frame + AE' }
             ].map((f) => (
               <div
                 key={f.k}
                 className="rounded-md border border-white/10 bg-[#07070f]/40 p-3"
               >
-                <div className="font-mono-punk text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
+                <div className="font-mono-punk text-[8px] uppercase tracking-[0.2em] text-muted-foreground">
                   {f.k}
                 </div>
-                <div className="mt-1 text-sm text-foreground">{f.v}</div>
+                <div className="mt-1 text-xs text-foreground font-medium">{f.v}</div>
               </div>
             ))}
           </div>
+
           <div className="mt-6 flex flex-wrap gap-2">
-            {['rediseño', 'guías de uso', 'intro', 'after effects', 'puppet', 'keyframes'].map(
-              (t) => (
-                <PunkBadge key={t} variant="purple">
-                  {t}
-                </PunkBadge>
-              )
-            )}
+            {['rediseño', 'guías de uso', 'intro-animada', 'keyframe-animation', 'puppet-tool'].map((t) => (
+              <PunkBadge key={t} variant="purple">
+                {t}
+              </PunkBadge>
+            ))}
           </div>
         </div>
       </div>

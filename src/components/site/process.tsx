@@ -1,166 +1,168 @@
 'use client'
 
 import { BlossomCarousel, BlossomPrev, BlossomNext } from '@blossom-carousel/react'
-import { ArrowRight } from 'reicon-react'
+import { ArrowRight, Sparkles, Film } from 'reicon-react'
 import { SectionLabel } from './section-label'
 import { PunkBadge } from './punk-badge'
 import { useScrollReveal } from './use-scroll-reveal'
-import { byCategory, useWorks } from './use-works'
-import type { Artwork } from '@/lib/types'
-
-const STEP_LABELS: Record<number, string> = {
-  1: 'Boceto',
-  2: 'Lineart',
-  3: 'Color base',
-  4: 'Render final',
-}
+import { ILLUSTRATION_PROCESS_SETS, ArtworkSet } from '@/lib/data'
 
 export function Process() {
   const { ref } = useScrollReveal()
-  const { works, loading } = useWorks()
-  const steps = byCategory(works, 'process')
 
   return (
     <section
       id="proceso"
       ref={ref}
-      className="reveal relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5"
+      className="reveal relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5 bg-[#07070f]"
     >
       <div className="mx-auto max-w-7xl">
         <SectionLabel index="02" title="Proceso Creativo" accent="cyan" />
 
         <div className="mt-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-          <h2 className="font-display text-4xl sm:text-5xl leading-[1.05] tracking-tight max-w-2xl">
-            Del boceto al{' '}
-            <span className="neon-cyan">render final</span> — paso a paso.
-          </h2>
-          <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
-            Cada ilustración sigue un flujo de producción anime: boceto de
-            gesto, limpieza de líneas, bloqueo de color plano y render con luces
-            y firma. Desliza para ver la transformación.
-          </p>
+          <div className="max-w-2xl">
+            <h2 className="font-display text-4xl sm:text-5xl leading-[1.05] tracking-tight">
+              Del boceto al <span className="neon-cyan">render final</span>.
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              Mi flujo artístico se basa en la planificación y la estructura. Ilustro pensando en capas
+              independientes para facilitar la animación posterior en After Effects. Explora las
+              etapas de cada pieza deslizando el carrusel de cada proyecto.
+            </p>
+          </div>
+          <div className="hidden lg:flex items-center gap-2 border border-white/10 bg-card/40 rounded-full px-4 py-2 font-mono-punk text-[10px] uppercase tracking-[0.2em] text-[#00e5ff]">
+            <Sparkles size={12} className="animate-pulse" />
+            <span>Arrastra o usa las flechas en cada tarjeta</span>
+          </div>
         </div>
 
-        {/* Step rail */}
-        {loading ? (
-          <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {Array.from({ length: 4 }).map((_, i) => (
-              <div
-                key={i}
-                className="aspect-square rounded-xl halftone-cyan animate-pulse"
-              />
-            ))}
-          </div>
-        ) : (
-          <>
-            <div className="mt-10 hidden lg:flex items-center justify-between gap-2 mb-4">
-              {steps.map((s, i) => (
-                <div key={s.id} className="flex items-center gap-2 flex-1">
-                  <div className="flex items-center gap-2">
-                    <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-[#00e5ff]/40 font-mono-punk text-[11px] text-[#00e5ff]">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                    <span className="font-mono-punk text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-                      {STEP_LABELS[i + 1] ?? s.title}
-                    </span>
-                  </div>
-                  {i < steps.length - 1 && (
-                    <div className="flex-1 h-px bg-gradient-to-r from-[#00e5ff]/40 to-transparent" />
-                  )}
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-6">
-              <BlossomCarousel
-                id="process-carousel"
-                className="process-carousel"
-                repeat
-              >
-                {steps.map((s, i) => (
-                  <ProcessSlide
-                    key={s.id}
-                    work={s}
-                    step={i + 1}
-                    label={STEP_LABELS[i + 1] ?? s.title}
-                  />
-                ))}
-              </BlossomCarousel>
-
-              <div className="mt-6 flex items-center justify-between">
-                <div className="font-mono-punk text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-                  {`// arrastra · ${steps.length} etapas`}
-                </div>
-                <div className="flex items-center gap-2">
-                  <BlossomPrev
-                    for="process-carousel"
-                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 text-foreground transition hover:border-[#00e5ff]/60 hover:text-[#00e5ff]"
-                  >
-                    <ArrowRight size={16} className="rotate-180" />
-                  </BlossomPrev>
-                  <BlossomNext
-                    for="process-carousel"
-                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 text-foreground transition hover:border-[#00e5ff]/60 hover:text-[#00e5ff]"
-                  >
-                    <ArrowRight size={16} />
-                  </BlossomNext>
-                </div>
-              </div>
-            </div>
-          </>
-        )}
+        {/* Proyectos en carrusel individual */}
+        <div className="mt-16 space-y-16">
+          {ILLUSTRATION_PROCESS_SETS.map((set, idx) => (
+            <ProcessSetCard key={set.id} set={set} index={idx + 1} />
+          ))}
+        </div>
       </div>
     </section>
   )
 }
 
-function ProcessSlide({
-  work,
-  step,
-  label,
-}: {
-  work: Artwork
-  step: number
-  label: string
-}) {
+function ProcessSetCard({ set, index }: { set: ArtworkSet; index: number }) {
   return (
-    <div
-      data-blossom-slide
-      className="blossom-slide relative mr-4 w-[88vw] sm:w-[420px] shrink-0"
-    >
-      <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-card">
-        <div className="relative aspect-square overflow-hidden">
-          { }
-          <img
-            src={work.imageUrl}
-            alt={work.title}
-            className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#07070f] via-transparent to-transparent" />
-          <div className="absolute left-4 top-4">
-            <PunkBadge variant="cyan">{`ETAPA ${String(step).padStart(2, '0')}`}</PunkBadge>
-          </div>
-          <div className="absolute right-4 top-4 font-display text-5xl text-[#00e5ff]/30">
-            {String(step).padStart(2, '0')}
-          </div>
-        </div>
-        <div className="p-5">
-          <h3 className="font-display text-xl text-foreground">{label}</h3>
-          <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">
-            {work.description}
-          </p>
-          {work.tags && (
-            <div className="mt-3 flex flex-wrap gap-1.5">
-              {work.tags
-                .split(',')
-                .slice(0, 4)
-                .map((t) => (
-                  <PunkBadge key={t} variant="ghost">
-                    {t.trim()}
-                  </PunkBadge>
-                ))}
-            </div>
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border-b border-white/5 pb-12 last:border-0 last:pb-0">
+      {/* Left: Info */}
+      <div className="lg:col-span-5 space-y-4">
+        <div className="flex items-center gap-3">
+          <span className="font-mono-punk text-xs text-[#00e5ff] border border-[#00e5ff]/30 rounded px-2 py-0.5">
+            PROYECTO {String(index).padStart(2, '0')}
+          </span>
+          {set.featured && (
+            <PunkBadge variant="pink">Destacado</PunkBadge>
           )}
+          <span className="font-mono-punk text-xs text-muted-foreground ml-auto">
+            {set.year}
+          </span>
+        </div>
+
+        <h3 className="font-display text-2xl sm:text-3xl text-foreground">
+          {set.title}
+        </h3>
+
+        <p className="text-sm leading-relaxed text-muted-foreground">
+          {set.description}
+        </p>
+
+        {set.role && (
+          <div className="text-xs text-muted-foreground font-mono-punk">
+            <span className="text-[#00e5ff]">// rol:</span> {set.role}
+          </div>
+        )}
+
+        <div className="flex flex-wrap gap-2 pt-2">
+          {set.tags?.map((tag) => (
+            <PunkBadge key={tag} variant="ghost">
+              #{tag}
+            </PunkBadge>
+          ))}
+        </div>
+      </div>
+
+      {/* Right: Blossom Carousel for steps */}
+      <div className="lg:col-span-7 relative">
+        <div className="absolute -inset-4 bg-gradient-to-tr from-[#00e5ff]/5 via-transparent to-[#ff1b6b]/5 opacity-30 rounded-2xl" />
+
+        <div className="relative overflow-hidden rounded-xl border border-white/10 bg-[#0c0c18]">
+          <BlossomCarousel
+            id={set.id}
+            className="process-set-carousel"
+            repeat
+          >
+            {set.items.map((item, itemIdx) => (
+              <div
+                key={itemIdx}
+                data-blossom-slide
+                className="blossom-slide relative w-full shrink-0 aspect-[4/3] sm:aspect-video flex items-center justify-center bg-[#07070f]"
+              >
+                {item.type === 'video' ? (
+                  <div className="relative w-full h-full">
+                    <video
+                      src={item.url}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-[#07070f]/80 backdrop-blur-sm border border-[#ff1b6b]/30 rounded-full px-2.5 py-1 text-[10px] font-mono-punk text-[#ff1b6b]">
+                      <Film size={10} className="animate-spin" />
+                      <span>ANIMACIÓN FINAL</span>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="relative w-full h-full">
+                    <img
+                      src={item.url}
+                      alt={item.label}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-[#07070f]/80 backdrop-blur-sm border border-white/10 rounded-full px-2.5 py-1 text-[10px] font-mono-punk text-muted-foreground">
+                      <svg className="h-2.5 w-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                      <span>ETAPA {itemIdx + 1}</span>
+                    </div>
+                  </div>
+                )}
+
+                {/* Subtitle / Phase Name */}
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#07070f] to-transparent p-4 pt-8">
+                  <div className="font-mono-punk text-[10px] uppercase tracking-[0.2em] text-[#00e5ff]">
+                    {item.label}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </BlossomCarousel>
+
+          {/* Controls bar */}
+          <div className="border-t border-white/10 bg-[#0c0c18] px-4 py-3 flex items-center justify-between">
+            <div className="font-mono-punk text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
+              {`// ${set.items.length} etapas de desarrollo`}
+            </div>
+            <div className="flex items-center gap-2">
+              <BlossomPrev
+                for={set.id}
+                className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 text-foreground transition hover:border-[#00e5ff]/60 hover:text-[#00e5ff]"
+              >
+                <ArrowRight size={14} className="rotate-180" />
+              </BlossomPrev>
+              <BlossomNext
+                for={set.id}
+                className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 text-foreground transition hover:border-[#00e5ff]/60 hover:text-[#00e5ff]"
+              >
+                <ArrowRight size={14} />
+              </BlossomNext>
+            </div>
+          </div>
         </div>
       </div>
     </div>

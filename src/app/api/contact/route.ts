@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { db } from '@/lib/db'
 
 // POST /api/contact
+// Para producción en Vercel, conecta aquí un servicio de email
+// (p.ej. Resend, Nodemailer, Formspree) o usa un form endpoint externo.
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
@@ -17,33 +18,14 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Mensaje requerido' }, { status: 400 })
     }
 
-    const sub = await db.contactSubmission.create({
-      data: {
-        name: name.trim(),
-        email: email.trim(),
-        projectType: projectType ?? null,
-        message: message.trim(),
-        budget: budget ?? null,
-      },
-    })
+    // TODO: enviar email con Resend u otro proveedor
+    // await resend.emails.send({ from: '...', to: 'diana@...', subject: '...', ... })
 
-    return NextResponse.json({ ok: true, id: sub.id })
+    console.log('[contact]', { name, email, projectType, message, budget })
+
+    return NextResponse.json({ ok: true })
   } catch (e) {
     console.error('POST /api/contact error', e)
-    return NextResponse.json({ error: 'internal' }, { status: 500 })
-  }
-}
-
-// GET /api/contact
-export async function GET() {
-  try {
-    const subs = await db.contactSubmission.findMany({
-      orderBy: { createdAt: 'desc' },
-      take: 50,
-    })
-    return NextResponse.json({ submissions: subs })
-  } catch (e) {
-    console.error('GET /api/contact error', e)
     return NextResponse.json({ error: 'internal' }, { status: 500 })
   }
 }
