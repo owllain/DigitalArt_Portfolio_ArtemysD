@@ -65,8 +65,12 @@ export function About() {
     <section
       id="sobre-mi"
       ref={ref}
-      className="reveal relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8"
+      className="reveal relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
+      {/* glow + halftone (paleta púrpura) */}
+      <div className="pointer-events-none absolute left-1/2 top-0 -z-10 h-80 w-[80%] -translate-x-1/2 rounded-full bg-[#9d4edd]/15 blur-[140px]" />
+      <div className="pointer-events-none absolute inset-0 halftone-cyan opacity-[0.04]" />
+
       {/* marquee strip top */}
       <div className="absolute inset-x-0 top-0 overflow-hidden border-y border-white/10 bg-[#0a0a14] py-2">
         <div className="flex w-max animate-marquee gap-8 whitespace-nowrap">
@@ -165,10 +169,46 @@ export function About() {
 
           {/* Right: bio + experience + skills */}
           <div className="lg:col-span-7">
-            <h2 className="font-display text-4xl sm:text-5xl leading-[1.05] tracking-tight">
-              Una ilustradora que le da{' '}
-              <span className="neon-pink">vida y carácter</span> a cada trazo.
-            </h2>
+            {/* Título + stats centrados */}
+            <div className="text-center">
+              <h2 className="font-display text-4xl sm:text-5xl leading-[1.05] tracking-tight">
+                Una ilustradora que le da{' '}
+                <span className="neon-pink">vida y carácter</span> a cada trazo.
+              </h2>
+
+              {/* live counts centrados con el título */}
+              <div className="mt-6 grid grid-cols-3 gap-3 max-w-lg mx-auto">
+                {[
+                  { n: stats.stats.worksCount ?? '18', l: 'Obras en portafolio' },
+                  {
+                    n: String(
+                      (stats.categoryCounts.animation ?? 0) +
+                        (stats.categoryCounts.background ?? 0)
+                    ),
+                    l: 'Piezas de animación',
+                  },
+                  {
+                    n: String(
+                      (stats.categoryCounts.illustration ?? 2) +
+                        (stats.categoryCounts.pet ?? 0)
+                    ),
+                    l: 'Ilustraciones + mascotas',
+                  },
+                ].map((s) => (
+                  <div
+                    key={s.l}
+                    className="rounded-lg border border-[#ff1b6b]/20 bg-[#ff1b6b]/5 p-4 text-center hover:border-[#ff1b6b]/50 transition-colors"
+                  >
+                    <div className="font-display text-3xl text-[#ff1b6b]">
+                      {s.n}
+                    </div>
+                    <div className="mt-1 font-mono-punk text-[9px] uppercase tracking-[0.18em] text-muted-foreground">
+                      {s.l}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
 
             <div className="mt-6 space-y-4 text-base leading-relaxed text-muted-foreground">
               <p>
@@ -239,38 +279,6 @@ export function About() {
               </div>
             </div>
 
-            {/* live counts (direct stats from data.ts) */}
-            <div className="mt-8 grid grid-cols-3 gap-3">
-              {[
-                { n: stats.stats.worksCount ?? '18', l: 'Obras en portafolio' },
-                {
-                  n: String(
-                    (stats.categoryCounts.animation ?? 0) +
-                      (stats.categoryCounts.background ?? 0)
-                  ),
-                  l: 'Piezas de animación',
-                },
-                {
-                  n: String(
-                    (stats.categoryCounts.illustration ?? 2) +
-                      (stats.categoryCounts.pet ?? 0)
-                  ),
-                  l: 'Ilustraciones + mascotas',
-                },
-              ].map((s) => (
-                <div
-                  key={s.l}
-                  className="rounded-lg border border-[#ff1b6b]/20 bg-[#ff1b6b]/5 p-4 text-center hover:border-[#ff1b6b]/50 transition-colors"
-                >
-                  <div className="font-display text-3xl text-[#ff1b6b]">
-                    {s.n}
-                  </div>
-                  <div className="mt-1 font-mono-punk text-[9px] uppercase tracking-[0.18em] text-muted-foreground">
-                    {s.l}
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </div>

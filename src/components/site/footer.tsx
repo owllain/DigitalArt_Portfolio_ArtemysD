@@ -55,9 +55,7 @@ export function Footer() {
               </span>
             </a>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground max-w-sm">
-              Diana Hernández — ilustradora digital y animadora freelance. El
-              toque peludo en cada frame, con paleta punk-cósmica inspirada en
-              Jinx.
+              Diana Hernández — a.k.a Arthemys_D — ilustradora digital y animadora freelance.
             </p>
 
             {/* social row */}

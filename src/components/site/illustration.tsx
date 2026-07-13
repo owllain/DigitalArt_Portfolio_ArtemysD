@@ -14,9 +14,12 @@ export function Illustration() {
     <section
       id="ilustracion"
       ref={ref}
-      className="reveal relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5 bg-[#07070f]"
+      className="reveal relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5 bg-[#07070f] overflow-hidden"
     >
-      <div className="pointer-events-none absolute right-0 top-40 -z-10 h-96 w-96 rounded-full bg-[#00e5ff]/10 blur-[120px]" />
+      {/* glow backdrop (paleta cyan) + transition */}
+      <div className="pointer-events-none absolute right-1/2 top-40 -z-10 h-96 w-96 translate-x-1/2 rounded-full bg-[#00e5ff]/8 blur-[120px]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#07070f]/80 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#00e5ff]/8 to-transparent" />
 
       <div className="mx-auto max-w-7xl">
         <SectionLabel index="06" title="Ilustración Digital" accent="pink" />
@@ -72,20 +75,18 @@ export function Illustration() {
         </div>
 
         {/* Pet portraits feature */}
-        <div className="mt-24">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
-            <div>
-              <div className="inline-flex items-center gap-2 mb-3">
-                <Heart size={14} className="text-[#ff1b6b]" weight="Filled" />
-                <span className="font-mono-punk text-[10px] uppercase tracking-[0.25em] text-[#ff1b6b] font-bold">
-                  MI RAMA PREFERIDA
-                </span>
-              </div>
-              <h3 className="font-display text-3xl sm:text-4xl leading-tight">
-                Retratos de <span className="neon-cyan">mascotas con vida</span>.
-              </h3>
+        <div className="mt-24 space-y-8">
+          <div className="space-y-4">
+            <div className="inline-flex items-center gap-2">
+              <Heart size={14} className="text-[#ff1b6b]" weight="Filled" />
+              <span className="font-mono-punk text-[10px] uppercase tracking-[0.25em] text-[#ff1b6b] font-bold">
+                MI RAMA PREFERIDA
+              </span>
             </div>
-            <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
+            <h3 className="font-display text-3xl sm:text-4xl leading-tight max-w-2xl">
+              Retratos de <span className="neon-cyan">mascotas con vida</span>.
+            </h3>
+            <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">
               Tomo una fotografía real de tu mascota y la reinvento por completo para capturar y expresar
               su personalidad única. Gracias a mi flujo de trabajo en <span className="text-foreground font-medium">After Effects (Puppet Tool)</span>,
               cada retrato ilustrado por capas cobra vida mediante animaciones orgánicas personalizadas.
@@ -93,7 +94,7 @@ export function Illustration() {
           </div>
 
           {/* Grilla de retratos de mascotas interactiva */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 max-w-2xl mx-auto">
             {PET_SETS.map((set) => (
               <PetSetCard key={set.id} set={set} />
             ))}
@@ -108,23 +109,23 @@ function PetSetCard({ set }: { set: ArtworkSet }) {
   return (
     <div className="group flex flex-col rounded-xl border border-white/10 bg-[#0c0c18] overflow-hidden">
       {/* Blossom Carousel */}
-      <div className="relative aspect-video bg-[#07070f] overflow-hidden">
-        <BlossomCarousel id={set.id} className="pet-set-carousel" repeat load="always">
+      <div className="relative aspect-video bg-[#07070f] overflow-hidden flex items-center justify-center">
+        <BlossomCarousel id={set.id} className="pet-set-carousel w-full h-full" repeat load="always">
           {set.items.map((item, itemIdx) => (
             <div
               key={itemIdx}
               data-blossom-slide
-              className="blossom-slide relative w-full h-full shrink-0 flex items-center justify-center"
+              className="blossom-slide relative w-full h-full shrink-0 flex items-center justify-center p-6"
             >
               {item.type === 'video' ? (
-                <div className="relative w-full h-full">
+                <div className="relative w-full h-full flex items-center justify-center">
                   <video
                     src={item.url}
                     autoPlay
                     loop
                     muted
                     playsInline
-                    className="w-full h-full object-cover"
+                    className="max-w-full max-h-full object-contain"
                   />
                   <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-[#07070f]/80 backdrop-blur-sm border border-[#00e5ff]/30 rounded-full px-2.5 py-1 text-[9px] font-mono-punk text-[#00e5ff]">
                     <Film size={10} className="animate-spin" />
@@ -132,11 +133,11 @@ function PetSetCard({ set }: { set: ArtworkSet }) {
                   </div>
                 </div>
               ) : (
-                <div className="relative w-full h-full">
+                <div className="relative w-full h-full flex items-center justify-center">
                   <img
                     src={item.url}
                     alt={item.label}
-                    className="w-full h-full object-cover"
+                    className="max-w-full max-h-full object-contain"
                     loading="lazy"
                   />
                   <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-[#07070f]/80 backdrop-blur-sm border border-white/10 rounded-full px-2.5 py-1 text-[9px] font-mono-punk text-muted-foreground">

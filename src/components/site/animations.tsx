@@ -1,7 +1,7 @@
 'use client'
 
 import { Carousel, CarouselContent, CarouselItem, useCarousel } from '@/components/ui/carousel'
-import { ArrowRight, Film, Palette, Sparkles, Star } from 'reicon-react'
+import { ArrowRight, Film, Palette, Sparkles } from 'reicon-react'
 import { SectionLabel } from './section-label'
 import { PunkBadge } from './punk-badge'
 import { useScrollReveal } from './use-scroll-reveal'
@@ -22,17 +22,19 @@ export function Animations() {
     <section
       id="animaciones"
       ref={ref}
-      className="reveal relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5 bg-[#07070f]"
+      className="reveal relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5 bg-[#07070f] overflow-hidden"
     >
-      {/* glow backdrop */}
-      <div className="pointer-events-none absolute left-1/2 top-40 -z-10 h-96 w-96 -translate-x-1/2 rounded-full bg-[#ff1b6b]/10 blur-[120px]" />
+      {/* glow backdrop + transition gradient */}
+      <div className="pointer-events-none absolute left-1/2 top-40 -z-10 h-96 w-96 -translate-x-1/2 rounded-full bg-[#ff1b6b]/8 blur-[120px]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#07070f]/80 to-transparent" />
 
       <div className="mx-auto max-w-7xl">
         <SectionLabel index="03" title="Animaciones" accent="pink" />
 
+        {/* Top: intro (left) + credits (right) */}
         <div className="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-10">
-          {/* Left: Intro & Credits */}
-          <div className="lg:col-span-5 space-y-6">
+          {/* Left: Intro + experiencia adicional */}
+          <div className="lg:col-span-7 space-y-6">
             <div>
               <h2 className="font-display text-4xl sm:text-5xl leading-[1.05] tracking-tight">
                 Animación 2D <span className="neon-pink">frame x frame</span>.
@@ -43,32 +45,6 @@ export function Animations() {
                 <span className="text-[#00e5ff] font-medium">Douga (In-Between)</span> y{' '}
                 <span className="text-[#00e5ff] font-medium">Shiage (Color)</span>. Mi rol consiste en asegurar la solidez y fluidez del trazo y la aplicación del color antes de que pase a post-producción y emisión.
               </p>
-            </div>
-
-            {/* Créditos oficiales en tarjetas minimalistas */}
-            <div className="space-y-3">
-              <div className="font-mono-punk text-[9px] uppercase tracking-[0.25em] text-muted-foreground">
-                {'// créditos oficiales publicados'}
-              </div>
-              <div className="space-y-2">
-                {PUBLISHED_CREDITS.map((credit, idx) => (
-                  <div
-                    key={idx}
-                    className="flex items-center gap-3 rounded-lg border border-white/5 bg-card/25 p-3 hover:border-[#ff1b6b]/40 hover:bg-card/50 transition-colors text-sm"
-                  >
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-[#ff1b6b]/10 text-[#ff1b6b]">
-                      {credit.role.includes('Color') ? <Palette size={14} /> : <Film size={14} />}
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="text-foreground font-medium truncate text-xs">{credit.title}</div>
-                      <div className="text-[10px] text-muted-foreground truncate">{credit.detail}</div>
-                    </div>
-                    <span className="font-mono-punk text-[9px] text-[#ff1b6b] border border-[#ff1b6b]/20 rounded px-1.5 py-0.5 shrink-0">
-                      {credit.role.includes('Color') ? 'COLOR' : 'DOUGA'}
-                    </span>
-                  </div>
-                ))}
-              </div>
             </div>
 
             {/* Nota NSFW */}
@@ -83,18 +59,36 @@ export function Animations() {
             </div>
           </div>
 
-          {/* Right: Animaciones en carruseles independientes */}
-          <div className="lg:col-span-7 space-y-10">
-            <div className="font-mono-punk text-[10px] uppercase tracking-[0.25em] text-muted-foreground mb-4">
-              {'// portafolio interactivo (boceto vs movimiento)'}
+          {/* Right: Créditos oficiales */}
+          <div className="lg:col-span-5 space-y-3">
+            <div className="font-mono-punk text-[9px] uppercase tracking-[0.25em] text-muted-foreground">
+              {'// créditos oficiales publicados'}
             </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {ANIMATION_SETS.map((set) => (
-                <AnimationSetCard key={set.id} set={set} />
+            <div className="space-y-2">
+              {PUBLISHED_CREDITS.map((credit, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center gap-3 rounded-lg border border-white/5 bg-card/25 p-3 hover:border-[#ff1b6b]/40 hover:bg-card/50 transition-colors text-sm"
+                >
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-[#ff1b6b]/10 text-[#ff1b6b]">
+                    {credit.role.includes('Color') ? <Palette size={14} /> : <Film size={14} />}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="text-foreground font-medium truncate text-xs">{credit.title}</div>
+                    <div className="text-[10px] text-muted-foreground truncate">{credit.detail}</div>
+                  </div>
+                  <span className="font-mono-punk text-[9px] text-[#ff1b6b] border border-[#ff1b6b]/20 rounded px-1.5 py-0.5 shrink-0">
+                    {credit.role.includes('Color') ? 'COLOR' : 'DOUGA'}
+                  </span>
+                </div>
               ))}
             </div>
           </div>
+        </div>
+
+        {/* Carruseles: la card "Acción Rápida e In-Betweens" como protagonista grande, las otras 3 como marco */}
+        <div className="mt-16">
+          <AnimationSetGrid />
         </div>
 
         {/* Juanburgueso Feature */}
@@ -128,38 +122,90 @@ function AnimationNavButtons() {
   )
 }
 
-function AnimationSetCard({ set }: { set: ArtworkSet }) {
+function AnimationSetGrid() {
+  // Card protagonista: "Acción Rápida e In-Betweens" (anim-set-2)
+  const featured = ANIMATION_SETS.find((s) => s.id === 'anim-set-2')
+  const others = ANIMATION_SETS.filter((s) => s.id !== 'anim-set-2')
+
   return (
-    <div className="group flex flex-col rounded-xl border border-white/10 bg-[#0c0c18] overflow-hidden">
+    <>
+      <div className="font-mono-punk text-[10px] uppercase tracking-[0.25em] text-muted-foreground mb-4">
+        {'// portafolio interactivo (boceto vs movimiento)'}
+      </div>
+
+      <div className="space-y-6">
+        {/* Protagonista: ancho completo, carousel alto con object-cover */}
+        {featured && (
+          <AnimationSetCard set={featured} large />
+        )}
+
+        {/* Las 3 cards pequeñas en fila de 3 columnas debajo */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {others.map((set) => (
+            <AnimationSetCard key={set.id} set={set} />
+          ))}
+        </div>
+      </div>
+    </>
+  )
+}
+
+function AnimationSetCard({ set, large = false }: { set: ArtworkSet; large?: boolean }) {
+  return (
+    <div className={`group flex flex-col rounded-xl border border-white/10 bg-[#0c0c18] overflow-hidden ${large ? 'border-[#ff1b6b]/30' : ''}`}>
       {/* Embla Carousel */}
-      <div className="relative aspect-square sm:aspect-video bg-[#07070f] overflow-hidden">
+      <div className={`relative bg-[#07070f] overflow-hidden ${large ? 'aspect-video' : 'aspect-[4/3]'}`}>
         <Carousel opts={{ loop: true }}>
           <CarouselContent className="-ml-0 h-full">
             {set.items.map((item, itemIdx) => (
               <CarouselItem key={itemIdx} className="pl-0">
-                <div className="relative w-full h-full flex items-center justify-center">
-                  {item.type === 'video' ? (
-                    <video
-                      src={item.url}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <img
-                      src={item.url}
-                      alt={item.label}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  )}
-
-                  {/* Tag indicator */}
-                  <div className="absolute top-3 left-3 bg-[#07070f]/80 backdrop-blur-sm border border-white/10 rounded-full px-2 py-0.5 text-[9px] font-mono-punk text-muted-foreground">
-                    {item.label}
+                {large ? (
+                  /* Protagonista: object-contain centrado para adaptarse al carrusel */
+                  <div className="relative w-full h-full flex items-center justify-center p-4">
+                    {item.type === 'video' ? (
+                      <video
+                        src={item.url}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="max-h-full w-auto max-w-full object-contain rounded-md"
+                      />
+                    ) : (
+                      <img
+                        src={item.url}
+                        alt={item.label}
+                        className="max-h-full w-auto max-w-full object-contain rounded-md"
+                        loading="lazy"
+                      />
+                    )}
                   </div>
+                ) : (
+                  /* Pequeñas: object-contain con padding para mejor definición */
+                  <div className="relative w-full h-full flex items-center justify-center p-5">
+                    {item.type === 'video' ? (
+                      <video
+                        src={item.url}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="max-h-full w-auto max-w-full object-contain rounded-md"
+                      />
+                    ) : (
+                      <img
+                        src={item.url}
+                        alt={item.label}
+                        className="max-h-full w-auto max-w-full object-contain rounded-md"
+                        loading="lazy"
+                      />
+                    )}
+                  </div>
+                )}
+
+                {/* Tag indicator */}
+                <div className="absolute top-3 left-3 bg-[#07070f]/80 backdrop-blur-sm border border-white/10 rounded-full px-2 py-0.5 text-[9px] font-mono-punk text-muted-foreground">
+                  {item.label}
                 </div>
               </CarouselItem>
             ))}
@@ -173,10 +219,10 @@ function AnimationSetCard({ set }: { set: ArtworkSet }) {
       </div>
 
       {/* Info card footer */}
-      <div className="p-4 flex-1 flex flex-col justify-between">
+      <div className={`p-4 flex-1 flex flex-col justify-between ${large ? 'sm:p-5' : ''}`}>
         <div>
           <div className="flex items-center justify-between">
-            <h3 className="font-display text-base text-foreground leading-tight">{set.title}</h3>
+            <h3 className={`font-display ${large ? 'text-lg sm:text-xl' : 'text-base'} text-foreground leading-tight`}>{set.title}</h3>
             <span className="font-mono-punk text-[9px] text-muted-foreground shrink-0">{set.year}</span>
           </div>
           <p className="mt-2 text-xs leading-relaxed text-muted-foreground">

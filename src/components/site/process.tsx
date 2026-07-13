@@ -14,8 +14,13 @@ export function Process() {
     <section
       id="proceso"
       ref={ref}
-      className="reveal relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5 bg-[#07070f]"
+      className="reveal relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5 bg-[#07070f] overflow-hidden"
     >
+      {/* glow + halftone (paleta cyan) + transition */}
+      <div className="pointer-events-none absolute left-1/2 top-0 -z-10 h-80 w-[80%] -translate-x-1/2 rounded-full bg-[#00e5ff]/8 blur-[140px]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#07070f]/80 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 halftone-cyan opacity-[0.03]" />
+
       <div className="mx-auto max-w-7xl">
         <SectionLabel index="02" title="Proceso Creativo" accent="cyan" />
 
@@ -120,7 +125,7 @@ function ProcessSetCard({ set, index }: { set: ArtworkSet; index: number }) {
             <CarouselContent className="-ml-0">
               {set.items.map((item, itemIdx) => (
                 <CarouselItem key={itemIdx} className="pl-0">
-                  <div className="relative w-full aspect-[4/3] sm:aspect-video flex items-center justify-center bg-[#07070f]">
+                  <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] flex items-center justify-center bg-[#07070f]">
                     {item.type === 'video' ? (
                       <div className="relative w-full h-full">
                         <video

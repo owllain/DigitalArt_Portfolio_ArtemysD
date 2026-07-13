@@ -31,10 +31,10 @@ export const ILLUSTRATION_PROCESS_SETS: ArtworkSet[] = [
     tags: ['boceto', 'lineart', 'color', 'neon', 'cyberpunk'],
     featured: true,
     items: [
-      { url: '/gallery/Carrusel1_1.png', type: 'image', label: 'Boceto / Composición' },
-      { url: '/gallery/Carrusel1_2.png', type: 'image', label: 'Delineado y Bloques' },
+      { url: '/gallery/Carrusel1_Final.mp4', type: 'video', label: 'Render e Intro Animada' },
       { url: '/gallery/Carrusel1_3.png', type: 'image', label: 'Color Base e Iluminación' },
-      { url: '/gallery/Carrusel1_Final.mp4', type: 'video', label: 'Render e Intro Animada' }
+      { url: '/gallery/Carrusel1_2.png', type: 'image', label: 'Delineado y Bloques' },
+      { url: '/gallery/Carrusel1_1.png', type: 'image', label: 'Boceto / Composición' }
     ]
   },
   {
@@ -47,9 +47,9 @@ export const ILLUSTRATION_PROCESS_SETS: ArtworkSet[] = [
     tags: ['boceto', 'lineart', 'post-procesado', 'fantasía', 'particles'],
     featured: true,
     items: [
-      { url: '/gallery/Carrusel2_1.png', type: 'image', label: 'Boceto Inicial' },
+      { url: '/gallery/Carrusel2_3.png.png', type: 'image', label: 'Render con Capas' },
       { url: '/gallery/Carrusel2_2.png.png', type: 'image', label: 'Lineart Limpio' },
-      { url: '/gallery/Carrusel2_3.png.png', type: 'image', label: 'Render con Capas' }
+      { url: '/gallery/Carrusel2_1.png', type: 'image', label: 'Boceto Inicial' }
     ]
   },
   {
@@ -147,6 +147,20 @@ export const ANIMATION_SETS: ArtworkSet[] = [
 // ─── SETS DE FONDOS DE ANIMACIÓN / LANDSCAPES ────────────────────────────────
 export const BACKGROUND_SETS: ArtworkSet[] = [
   {
+    id: 'bg-set-2',
+    title: 'Estación de Tren Lluviosa',
+    category: 'background',
+    description: 'Fondo de exterior con ambiente nostálgico. Recreación inspirada en la atmósfera húmeda y reflectiva de "El Jardín de las Palabras" (Makoto Shinkai), adaptando las luces de neón a la paleta del artista.',
+    year: '2025',
+    role: 'Estudio de Fondo',
+    tags: ['rain', 'makoto-shinkai', 'nostalgic', 'environments'],
+    featured: false,
+    items: [
+      { url: '/gallery/Landscape2_1.jpg', type: 'image', label: 'Fase de Valores y Luces' },
+      { url: '/gallery/Landscape2_2.jpg', type: 'image', label: 'Fondo Renderizado Final' }
+    ]
+  },
+  {
     id: 'bg-set-1',
     title: 'Callejón Cyber-Street',
     category: 'background',
@@ -159,20 +173,6 @@ export const BACKGROUND_SETS: ArtworkSet[] = [
       { url: '/gallery/Landscape1_1.jpg', type: 'image', label: 'Bloqueo de Capas' },
       { url: '/gallery/Landscape1_2.jpg', type: 'image', label: 'Detalles y Letreros Neón' },
       { url: '/gallery/Landscape1_Final.gif', type: 'gif', label: 'Fondo Animado Final' }
-    ]
-  },
-  {
-    id: 'bg-set-2',
-    title: 'Estación de Tren Lluviosa',
-    category: 'background',
-    description: 'Fondo de exterior con ambiente nostálgico. Recreación inspirada en la atmósfera húmeda y reflectiva de "El Jardín de las Palabras" (Makoto Shinkai), adaptando las luces de neón a la paleta del artista.',
-    year: '2025',
-    role: 'Estudio de Fondo',
-    tags: ['rain', 'makoto-shinkai', 'nostalgic', 'environments'],
-    featured: false,
-    items: [
-      { url: '/gallery/Landscape2_1.jpg', type: 'image', label: 'Fase de Valores y Luces' },
-      { url: '/gallery/Landscape2_2.jpg', type: 'image', label: 'Fondo Renderizado Final' }
     ]
   },
   {
@@ -202,9 +202,10 @@ export const PET_SETS: ArtworkSet[] = [
     tags: ['retratos', 'mascotas', 'comisión', 'gatos', 'perros'],
     featured: true,
     items: [
-      { url: '/gallery/Sticker_1.jpg', type: 'image', label: 'Retrato de Mascota 1' },
-      { url: '/gallery/Sticker_2.png', type: 'image', label: 'Retrato de Mascota 2' },
-      { url: '/gallery/Sticker_3.png', type: 'image', label: 'Retrato de Mascota 3' }
+      { url: '/gallery/Carrusel2_1.png', type: 'image', label: 'Retrato de Mascota 1' },
+      { url: '/gallery/Sticker_1.jpg', type: 'image', label: 'Retrato de Mascota 2' },
+      { url: '/gallery/Sticker_2.png', type: 'image', label: 'Retrato de Mascota 3' },
+      { url: '/gallery/Sticker_3.png', type: 'image', label: 'Retrato de Mascota 4' }
     ]
   }
 ]

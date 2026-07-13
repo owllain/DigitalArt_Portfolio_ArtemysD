@@ -52,18 +52,11 @@ export function Hero() {
 
           {/* Headline */}
           <h1
-            className="font-display text-[clamp(2.8rem,9vw,7.5rem)] leading-[0.92] tracking-tight animate-fade-up"
+            className="font-display text-[clamp(2.2rem,7.5vw,6.5rem)] leading-[0.92] tracking-tight animate-fade-up"
             style={{ animationDelay: '75ms' }}
           >
-            <span className="block text-foreground">DIANA</span>
+            <span className="block text-foreground">Diana Hernández</span>
             <span className="block">
-              <span className="text-[#ff1b6b] drop-shadow-[0_0_24px_rgba(255,27,107,0.5)]">
-                HERN
-              </span>
-              <span className="text-foreground">ÁNDEZ</span>
-            </span>
-            <span className="block">
-              <span className="text-foreground">/</span>{' '}
               <span className="neon-cyan">ARTHEMYS</span>
               <span className="text-[#ffd60a]">_D</span>
             </span>
@@ -71,7 +64,7 @@ export function Hero() {
 
           {/* tagline */}
           <div
-            className="mt-7 max-w-2xl animate-fade-up"
+            className="mt-14 max-w-2xl animate-fade-up"
             style={{ animationDelay: '150ms' }}
           >
             <div className="rounded-3xl border border-white/10 bg-[#000]/70 p-6 shadow-[0_35px_120px_-40px_rgba(0,0,0,0.8)] backdrop-blur-sm">

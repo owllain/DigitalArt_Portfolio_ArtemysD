@@ -1,7 +1,7 @@
 'use client'
 
 import { Carousel, CarouselContent, CarouselItem, useCarousel } from '@/components/ui/carousel'
-import { ArrowRight, Layers, Sparkles } from 'reicon-react'
+import { ArrowRight, Layers } from 'reicon-react'
 import { SectionLabel } from './section-label'
 import { PunkBadge } from './punk-badge'
 import { useScrollReveal } from './use-scroll-reveal'
@@ -14,8 +14,13 @@ export function Backgrounds() {
     <section
       id="fondos"
       ref={ref}
-      className="reveal relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5 bg-[#07070f]"
+      className="reveal relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5 bg-[#07070f] overflow-hidden"
     >
+      {/* glow backdrop (paleta púrpura) + transition */}
+      <div className="pointer-events-none absolute right-1/2 top-40 -z-10 h-96 w-96 -translate-x-1/2 rounded-full bg-[#9d4edd]/8 blur-[120px]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#07070f]/80 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#9d4edd]/8 to-transparent" />
+
       <div className="mx-auto max-w-7xl">
         <SectionLabel index="04" title="Fondos de Animación" accent="purple" />
 
@@ -84,11 +89,11 @@ function BackgroundSetCard({ set, isLarge }: { set: ArtworkSet; isLarge?: boolea
               <CarouselContent className="-ml-0">
                 {set.items.map((item, itemIdx) => (
                   <CarouselItem key={itemIdx} className="pl-0">
-                    <div className="relative w-full aspect-[21/9] sm:aspect-[21/9] flex items-center justify-center">
+                    <div className="relative w-full aspect-[3/2] sm:aspect-[16/10] flex items-center justify-center p-4 sm:p-6">
                       <img
                         src={item.url}
                         alt={item.label}
-                        className="w-full h-full object-cover"
+                        className="max-h-full w-auto max-w-full object-contain rounded-md"
                         loading="lazy"
                       />
 
@@ -108,11 +113,11 @@ function BackgroundSetCard({ set, isLarge }: { set: ArtworkSet; isLarge?: boolea
               </div>
             </Carousel>
           ) : (
-            <div className="relative aspect-[21/9] sm:aspect-[21/9]">
+            <div className="relative aspect-[3/2] sm:aspect-[16/10] flex items-center justify-center p-4 sm:p-6">
               <img
                 src={set.items[0].url}
                 alt={set.title}
-                className="w-full h-full object-cover"
+                className="max-h-full w-auto max-w-full object-contain rounded-md"
                 loading="lazy"
               />
               <div className="absolute top-3 left-3 bg-[#07070f]/80 backdrop-blur-sm border border-[#9d4edd]/30 rounded-full px-2.5 py-1 text-[9px] font-mono-punk text-[#9d4edd]">
@@ -148,14 +153,6 @@ function BackgroundSetCard({ set, isLarge }: { set: ArtworkSet; isLarge?: boolea
             <span>Desliza para ver la separación por capas</span>
           </div>
         )}
-
-        <div className="flex flex-wrap gap-2 pt-2">
-          {set.tags?.map((tag) => (
-            <span key={tag} className="text-xs text-muted-foreground font-mono-punk">
-              #{tag}
-            </span>
-          ))}
-        </div>
       </div>
     </div>
   )
