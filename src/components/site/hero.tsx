@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowDown, Sparkles, Play } from 'reicon-react'
+import { ArrowDown, Play } from 'reicon-react'
 import { SlotLabel } from './slot-label'
 import { PunkBadge } from './punk-badge'
 
@@ -76,14 +76,15 @@ export function Hero() {
           >
             <div className="rounded-3xl border border-white/10 bg-[#000]/70 p-6 shadow-[0_35px_120px_-40px_rgba(0,0,0,0.8)] backdrop-blur-sm">
               <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
-                Ilustradora digital y animadora freelance.{' '}
-                <span className="text-foreground">Animación 2D frame x frame</span>,
-                fondos de animación, iconos y retratos de mascotas — todo con un
-                toque peludo y una paleta punk-cósmica que mezcla{' '}
+                Diseñadora, ilustradora digital y animadora freelance.
+                Conocimiento en la paquetería de Adobe. Ilustración de fondos,
+                criaturas y personajes — todo con un{' '}
+                <span className="text-foreground">toque peludo</span> para buscar
+                siempre lo colorido en lo típico. Mezclo{' '}
                 <span className="text-[#c7d2fe]">fantasía</span>,{' '}
-                <span className="text-[#d8b4fe]">sci-fi</span>,{' '}
-                <span className="text-[#00e5ff]">punk</span> y{' '}
-                <span className="text-[#ffd60a]">steampunk</span>.
+                <span className="text-[#d8b4fe]">criaturas</span>,{' '}
+                <span className="text-[#00e5ff]">color</span> y{' '}
+                <span className="text-[#ffd60a]">café</span>.
               </p>
             </div>
           </div>
@@ -95,17 +96,10 @@ export function Hero() {
           >
             <a
               href="#animaciones"
-              className="group inline-flex items-center gap-2 rounded-md bg-[#ff1b6b] px-6 py-3.5 font-mono-punk text-[13px] uppercase tracking-[0.2em] text-[#07070f] transition-all hover:glow-pink hover:scale-[1.03]"
+              className="group inline-flex items-center gap-2 rounded-md bg-[#00e5ff] px-6 py-3.5 font-mono-punk text-[13px] uppercase tracking-[0.2em] text-[#07070f] transition-all hover:glow-cyan hover:scale-[1.03]"
             >
               <Play size={16} weight="Filled" />
               <SlotLabel text="Ver portafolio" />
-            </a>
-            <a
-              href="#contacto"
-              className="group inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/5 px-6 py-3.5 font-mono-punk text-[13px] uppercase tracking-[0.2em] text-foreground backdrop-blur-sm transition-all hover:border-[#00e5ff]/60 hover:glow-cyan hover:scale-[1.03]"
-            >
-              <Sparkles size={16} />
-              <SlotLabel text="Contáctame" />
             </a>
           </div>
 

@@ -87,14 +87,6 @@ export function PunkNav() {
           ))}
         </ul>
 
-        {/* CTA */}
-        <a
-          href="#contacto"
-          className="hidden lg:inline-flex items-center gap-2 rounded-md bg-[#ff1b6b] px-4 py-2 font-mono-punk text-[12px] uppercase tracking-[0.18em] text-[#07070f] transition-all hover:glow-pink hover:scale-[1.03]"
-        >
-          Contáctame
-        </a>
-
         {/* Mobile toggle */}
         <button
           onClick={() => setOpen((v) => !v)}
@@ -125,15 +117,6 @@ export function PunkNav() {
                 </a>
               </li>
             ))}
-            <li>
-              <a
-                href="#contacto"
-                onClick={() => setOpen(false)}
-                className="mt-2 block rounded-md bg-[#ff1b6b] px-3 py-3 text-center font-mono-punk text-xs uppercase tracking-[0.2em] text-[#07070f]"
-              >
-                Contáctame
-              </a>
-            </li>
           </ul>
         </div>
       )}
