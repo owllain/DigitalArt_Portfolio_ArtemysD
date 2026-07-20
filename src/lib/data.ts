@@ -89,39 +89,26 @@ export const ILLUSTRATION_PROCESS_SETS: ArtworkSet[] = [
 export const ANIMATION_SETS: ArtworkSet[] = [
   {
     id: 'anim-set-1',
-    title: 'Secuencia de Movimiento y Gesto',
+    title: 'Fate Strange Fake — Capítulo 02',
     category: 'animation',
-    description: 'Estudio dinámico de animación frame a frame para capturar el peso y el arco del movimiento. Comparación entre la pose clave estática y el loop final animado.',
-    year: '2024',
-    role: 'Key Animation',
-    tags: ['frame-by-frame', 'key-poses', 'anatomy', 'motion-arc'],
-    featured: true,
+    description: 'Mi trabajo fue solamente color, esto previo a la correción de mi superior.',
+    year: '2025',
+    role: 'Color',
+    tags: ['frame-by-frame', 'japan', 'anime'],
+    featured: false,
     items: [
       { url: '/gallery/Animacion1_1.png', type: 'image', label: 'Keyframe Clave' },
       { url: '/gallery/Animacion1_2.png.mp4', type: 'video', label: 'Loop de Animación' }
     ]
   },
   {
-    id: 'anim-set-2',
-    title: 'Acción Rápida e In-Betweens',
-    category: 'animation',
-    description: 'Trabajo centrado en la fluidez de movimiento mediante Douga (In-Betweens). Definición de timing preciso para impactos rápidos y efectos visuales de estela.',
-    year: '2025',
-    role: 'In-Between / Douga',
-    tags: ['douga', 'timing', 'action', 'fluidity'],
-    featured: true,
-    items: [
-      { url: '/gallery/Carrusel2_Final.mp4', type: 'video', label: 'Animación Final' }
-    ]
-  },
-  {
     id: 'anim-set-3',
-    title: 'Timing y Transición de Escena',
+    title: 'Kimi to Boku — Capítulo 03',
     category: 'animation',
-    description: 'Estudio de aceleración y desaceleración en transiciones de personajes. Animación frame por frame limpia con atención a las deformaciones físicas del movimiento (squash & stretch).',
-    year: '2024',
-    role: 'Animadora Freelance',
-    tags: ['squash-stretch', 'timing', 'transition', 'clean-up'],
+    description: 'Mi trabajo fue solamente color, esto previo a la correción de mi superior.',
+    year: '2025',
+    role: 'Color',
+    tags: ['frame by frame', 'japan', 'anime'],
     featured: false,
     items: [
       { url: '/gallery/Animacion5_1.png', type: 'image', label: 'Fotograma de Transición' },
@@ -130,16 +117,29 @@ export const ANIMATION_SETS: ArtworkSet[] = [
   },
   {
     id: 'anim-set-4',
-    title: 'Efectos Especiales y Tinta',
+    title: 'Alice at the End of Her Life',
     category: 'animation',
-    description: 'Estudio sobre la aplicación de sombras de color definidas (Shiage) y el trazo de líneas estilizadas en la animación digital.',
+    description: 'Mi trabajo fue solamente color.',
     year: '2025',
-    role: 'Shiage (Color)',
-    tags: ['shiage', 'flat-color', 'ink-lineart', 'shadows'],
+    role: 'Color',
+    tags: ['frame by frame', 'videojuego', 'trailer'],
     featured: false,
     items: [
       { url: '/gallery/Animacion3_1.png', type: 'image', label: 'Lineart Limpio' },
       { url: '/gallery/Animacion3_2.mp4', type: 'video', label: 'Animación con Color final' }
+    ]
+  },
+  {
+    id: 'anim-set-5',
+    title: 'The Casebook of Arne',
+    category: 'animation',
+    description: 'Mi trabajo fueron solamente in betweens',
+    year: '2025',
+    role: 'Douga',
+    tags: ['frame by frame', 'japan', 'anime'],
+    featured: false,
+    items: [
+      { url: '/gallery/Animacion4_2.mp4', type: 'video', label: 'In-Between Animation' }
     ]
   }
 ]
@@ -190,25 +190,6 @@ export const BACKGROUND_SETS: ArtworkSet[] = [
   }
 ]
 
-// ─── PORTAFOLIO DE MASCOTAS ──────────────────────────────────────────────────
-export const PET_SETS: ArtworkSet[] = [
-  {
-    id: 'pet-set-1',
-    title: 'Retratos de Mascotas Estilizadas',
-    category: 'pet',
-    description: 'Reinvención de fotografías de mascotas reales en ilustraciones cargadas de personalidad. Se conserva la pose original del animal pero se le da un estilo cósmico, neón y aventurero.',
-    year: '2024',
-    role: 'Retratos de Mascotas',
-    tags: ['retratos', 'mascotas', 'comisión', 'gatos', 'perros'],
-    featured: true,
-    items: [
-      { url: '/gallery/Carrusel2_1.png', type: 'image', label: 'Retrato de Mascota 1' },
-      { url: '/gallery/Sticker_1.jpg', type: 'image', label: 'Retrato de Mascota 2' },
-      { url: '/gallery/Sticker_2.png', type: 'image', label: 'Retrato de Mascota 3' },
-      { url: '/gallery/Sticker_3.png', type: 'image', label: 'Retrato de Mascota 4' }
-    ]
-  }
-]
 
 // ─── STICKERS Y OTROS ASSETS ─────────────────────────────────────────────────
 export const STICKER_SETS: ArtworkSet[] = [
@@ -304,19 +285,7 @@ export const WORKS: Artwork[] = [
     featured: s.featured ?? false,
     order: idx
   })),
-  ...PET_SETS.map((s, idx) => ({
-    id: s.id,
-    title: s.title,
-    category: s.category,
-    description: s.description,
-    imageUrl: s.items[0].url,
-    year: s.year ?? null,
-    client: s.client ?? null,
-    role: s.role ?? null,
-    tags: s.tags?.join(',') ?? '',
-    featured: s.featured ?? false,
-    order: idx
-  })),
+
   ...STICKER_SETS.map((s, idx) => ({
     id: s.id,
     title: s.title,
@@ -338,8 +307,7 @@ export function computeStats() {
     animation: ANIMATION_SETS.length,
     background: BACKGROUND_SETS.length,
     icon: STICKER_SETS.length,
-    illustration: 2, // sueltas
-    pet: PET_SETS.length
+    illustration: 2 // sueltas
   }
   
   return {
@@ -349,7 +317,6 @@ export function computeStats() {
         ANIMATION_SETS.length +
         BACKGROUND_SETS.length +
         STICKER_SETS.length +
-        PET_SETS.length +
         ADDITIONAL_WORKS.length
       )
     },

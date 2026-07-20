@@ -1,7 +1,5 @@
 'use client'
 
-import { Carousel, CarouselContent, CarouselItem, useCarousel } from '@/components/ui/carousel'
-import { ArrowRight } from 'reicon-react'
 import { SectionLabel } from './section-label'
 import { PunkBadge } from './punk-badge'
 import { useScrollReveal } from './use-scroll-reveal'
@@ -63,68 +61,42 @@ export function Icons() {
   )
 }
 
-function StickerNavButtons() {
-  const { scrollPrev, scrollNext } = useCarousel()
-  return (
-    <>
-      <button
-        type="button"
-        onClick={scrollPrev}
-        aria-label="Anterior"
-        className="pointer-events-auto flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-[#07070f]/60 text-foreground transition hover:border-[#ffd60a]/60 hover:text-[#ffd60a] opacity-0 group-hover:opacity-100"
-      >
-        <ArrowRight size={14} className="rotate-180" />
-      </button>
-      <button
-        type="button"
-        onClick={scrollNext}
-        aria-label="Siguiente"
-        className="pointer-events-auto flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-[#07070f]/60 text-foreground transition hover:border-[#ffd60a]/60 hover:text-[#ffd60a] opacity-0 group-hover:opacity-100"
-      >
-        <ArrowRight size={14} />
-      </button>
-    </>
-  )
-}
 
 function StickerSetCard({ set }: { set: ArtworkSet }) {
   return (
     <div className="group flex flex-col rounded-xl border border-white/10 bg-[#0c0c18] overflow-hidden">
-      {/* Embla Carousel for Sticker Sheets/Items */}
-      <div className="relative w-full aspect-square sm:aspect-video bg-[#07070f] overflow-hidden">
-        <Carousel opts={{ loop: true }}>
-          <CarouselContent className="-ml-0 h-full w-full">
-            {set.items.map((item, itemIdx) => (
-              <CarouselItem key={itemIdx} className="pl-0 w-full h-full min-w-0">
-                <div className="w-full h-full flex items-center justify-center bg-[#07070f] scanlines relative">
-                  <img
-                    src={item.url}
-                    alt={item.label}
-                    className="max-h-[65%] max-w-[65%] h-auto w-auto object-contain transition-transform duration-[600ms] group-hover:scale-105"
-                    loading="lazy"
-                  />
+      {/* Bento Grid Layout for Sticker Sheets/Items */}
+      <div className="w-full bg-[#07070f] p-4 sm:p-5">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 auto-rows-fr">
+          {set.items.map((item, itemIdx) => {
+            // Primer item toma un cuadro grande (2x2)
+            const isLarge = itemIdx === 0;
+            return (
+              <div 
+                key={itemIdx} 
+                className={`relative overflow-hidden rounded-xl border border-white/10 bg-[#0c0c18] flex items-center justify-center scanlines p-4 group/item hover:border-[#ffd60a]/40 transition-colors ${
+                  isLarge 
+                    ? 'col-span-2 row-span-2 aspect-square lg:aspect-auto' 
+                    : 'col-span-1 row-span-1 aspect-square'
+                }`}
+              >
+                <img
+                  src={item.url}
+                  alt={item.label}
+                  className="max-h-full max-w-full object-contain transition-transform duration-[600ms] group-hover/item:scale-110"
+                  loading="lazy"
+                />
 
-                  {/* Slide Counter Overlay */}
-                  <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-[#07070f]/80 backdrop-blur-sm border border-white/10 rounded-full px-2.5 py-1 text-[9px] font-mono-punk text-muted-foreground z-10">
-                    <span>ITEM {itemIdx + 1} / {set.items.length}</span>
-                  </div>
-
-                  {/* Item Label */}
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#07070f]/90 via-[#07070f]/20 to-transparent p-4 pt-8 text-center z-10">
-                    <span className="font-mono-punk text-[9px] uppercase tracking-[0.2em] text-[#ffd60a]">
-                      {item.label}
-                    </span>
-                  </div>
+                {/* Item Label */}
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#07070f]/95 via-[#07070f]/40 to-transparent p-3 pt-8 text-center opacity-0 group-hover/item:opacity-100 transition-opacity duration-300">
+                  <span className="font-mono-punk text-[9px] uppercase tracking-[0.2em] text-[#ffd60a]">
+                    {item.label}
+                  </span>
                 </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-
-          {/* navigation arrows */}
-          <div className="absolute inset-y-0 left-0 right-0 pointer-events-none flex items-center justify-between px-3 z-20">
-            <StickerNavButtons />
-          </div>
-        </Carousel>
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       {/* Info card text */}

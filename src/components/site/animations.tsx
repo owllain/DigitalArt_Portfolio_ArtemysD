@@ -8,11 +8,11 @@ import { useScrollReveal } from './use-scroll-reveal'
 import { ANIMATION_SETS, ArtworkSet } from '@/lib/data'
 
 const PUBLISHED_CREDITS = [
-  { title: 'Fate Strange Fake — Capítulo 02', role: 'Shiage (Color)', detail: 'A-1 Pictures / Koeda Animation' },
-  { title: 'Kimi to Boku — Capítulo 03', role: 'Shiage (Color)', detail: 'J.C.Staff / Koeda Animation' },
-  { title: 'Video musical "Reloj de Arena" por Aki Chan', role: 'Shiage (Color)', detail: 'Animación MV' },
-  { title: 'Trailer del videojuego "Alice at the End of Her Life"', role: 'Shiage (Color)', detail: 'Promo Trailer' },
-  { title: 'The Casebook of Arne', role: 'Douga (In-Between)', detail: 'Producción de Animación' }
+  { title: 'Fate Strange Fake — Capítulo 02', role: 'Shiage (Color)', detail: 'Anime / Koeda Animation' },
+  { title: 'Kimi to Boku — Capítulo 03', role: 'Shiage (Color)', detail: 'Anime / Koeda Animation' },
+  { title: 'Video musical "Reloj de Arena" por Aki Chan', role: 'Shiage (Color)', detail: 'Animación MV / Koeda Animation' },
+  { title: 'Trailer del videojuego "Alice at the End of Her Life"', role: 'Shiage (Color)', detail: 'Videojuego / Koeda Animation' },
+  { title: 'The Casebook of Arne', role: 'Douga (In-Between)', detail: 'Anime / Koeda Animation' }
 ]
 
 export function Animations() {
@@ -55,7 +55,7 @@ export function Animations() {
                   EXPERIENCIA ADICIONAL
                 </span>
               </div>
-              Cuento también con experiencia en producciones de animación <span className="text-foreground font-medium">NSFW</span> en el apartado técnico de Douga (In-Between) y Shiage (Color), manteniendo altos estándares de limpieza en los fotogramas bajo requerimientos específicos.
+              Cuento también con experiencia en producciones de animación <span className="text-foreground font-medium">NSFW</span> en el apartado técnico de Douga (In-Between) y Shiage (Color).
             </div>
           </div>
 
@@ -139,8 +139,8 @@ function AnimationSetGrid() {
           <AnimationSetCard set={featured} large />
         )}
 
-        {/* Las 3 cards pequeñas en fila de 3 columnas debajo */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        {/* Las cards pequeñas en fila debajo */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {others.map((set) => (
             <AnimationSetCard key={set.id} set={set} />
           ))}
